@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>工具室夹具工作台</title>
+  <link rel="stylesheet" href="./styles/tokens.css" />
+  <link rel="stylesheet" href="./styles/global.css" />
+</head>
+<body class="app-shell">
+  <main class="page" id="app"></main>
+  <script src="./mock/api.js"></script>
+  <script src="./js/shell.js"></script>
+  <script>
+    AptShell.mount("index");
+    const s = FixtureAPI.stats();
+    document.getElementById("app").innerHTML = `
+      <div class="page-header">
+        <div>
+          <h2>夜班控制台</h2>
+          <p>班组长借夹具 · 仓管核验归还 · 工艺员看校准锁定。演示日 ${FixtureAPI.TODAY}</p>
+        </div>
+        <div>
+          <button class="btn" id="resetBtn">重置演示数据</button>
+        </div>
+      </div>
+      <div class="kpi-row">
+        <div class="card kpi"><div class="n">${s.inStock}</div><div class="l">在库可借</div></div>
+        <div class="card kpi"><div class="n">${s.out}</div><div class="l">在借</div></div>
+        <div class="card kpi"><div class="n" style="color:var(--apt-warning)">${s.overdue}</div><div class="l">超期</div></div>
+        <div class="card kpi"><div class="n" style="color:var(--apt-danger)">${s.locked}</div><div class="l">校准锁定</div></div>
+      </div>
+      <div class="card" style="padding:18px 20px">
+        <p class="muted">建议路径：台账挑 FX-1001 借出成功 → 再借 FX-1002 看占用冲突 → 借 FX-1003 看校准拒绝 → 仓管归还损坏转维修。</p>
+        <p><a class="btn btn-primary" href="./fixture-list/index.html">进入夹具台账</a>
+           <a class="btn btn-ghost" href="./checkout-form/index.html">借出申请</a>
+           <a class="btn btn-ghost" href="./calibration-board/index.html">校准看板</a></p>
+      </div>`;
+    document.getElementById("resetBtn").onclick = () => {
+      FixtureAPI.reset();
+      location.reload();
+    };
+  </script>
+</body>
+</html>

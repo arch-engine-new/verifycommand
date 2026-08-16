@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>校准到期看板</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/global.css" />
+</head>
+<body class="app-shell">
+  <main class="page">
+    <div class="page-header">
+      <div>
+        <h2>校准到期看板</h2>
+        <p>到期前 7 天预警；到期当日及以后锁定，禁止借出。</p>
+      </div>
+    </div>
+    <div id="msg"></div>
+    <div class="toolbar">
+      <select id="level">
+        <option value="">预警 + 锁定</option>
+        <option value="预警">仅预警</option>
+        <option value="锁定">仅锁定</option>
+      </select>
+    </div>
+    <div class="card table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>编码</th><th>类型</th><th>到期日</th><th>剩余天</th><th>级别</th><th>夹具状态</th><th>操作</th></tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </main>
+  <script src="../mock/api.js"></script>
+  <script src="../js/shell.js"></script>
+  <script>
+    AptShell.mount("calibration-board");
+    const role = FixtureAPI.getRole();
+    function render() {
+      const level = document.getElementById("level").value;
+      const rows = FixtureAPI.listCalibration().filter((r) => !level || r.level === level);
+      const tb = document.getElementById("tbody");
+      if (!rows.length) {
+        tb.innerHTML = `<tr><td colspan="7" class="empty">近 7 天无预警且无锁定</td></tr>`;
+        return;
+      }
+      tb.innerHTML = rows.map((r) => {
+        const flag = r.level === "锁定" ? "row-lock" : "row-flag";
+        const canEdit = role !== "班组长";
+        const due = canEdit
+          ? `<input type="date" value="${r.calibrationDueDate}" data-due="${r.id}" />`
+          : r.calibrationDueDate;
+        const save = canEdit
+          ? `<button class="btn" data-save="${r.id}">保存到期日</button>`
+          : `<span class="muted">不可从本页借出</span>`;
+        return `<tr class="${flag}">
+          <td><a class="code" href="../fixture-detail/index.html?id=${r.id}">${r.code}</a></td>
+          <td>${r.typeLabel}</td>
+          <td>${due}</td>
+          <td>${r.daysRemaining}</td>
+          <td>${AptShell.badge(r.level)}</td>
+          <td>${AptShell.badge(r.status)}</td>
+          <td>${save}</td>
+        </tr>`;
+      }).join("");
+    }
+    document.getElementById("level").onchange = render;
+    document.getElementById("tbody").addEventListener("click", (e) => {
+      const id = e.target.getAttribute("data-save");
+      if (!id) return;
+      if (role === "班组长") {
+        document.getElementById("msg").innerHTML = `<div class="alert alert-error">班组长不能改校准到期日。</div>`;
+        return;
+      }
+      const input = document.querySelector(`[data-due="${id}"]`);
+      const fx = FixtureAPI.getFixture(id);
+      const r = FixtureAPI.upsertFixture({ id, code: fx.code, type: fx.type, calibrationDueDate: input.value });
+      document.getElementById("msg").innerHTML = `<div class="alert ${r.ok ? "alert-ok" : "alert-error"}">${r.ok ? "已保存并重算锁定" : r.error}</div>`;
+      render();
+    });
+    render();
+  </script>
+</body>
+</html>

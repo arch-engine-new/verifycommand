@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在借 / 超期清单</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/global.css" />
+</head>
+<body class="app-shell">
+  <main class="page">
+    <div class="page-header">
+      <div>
+        <h2>在借 / 超期清单</h2>
+        <p>预计归还日已过仍在借的单据标为超期（色条 + 文案）。</p>
+      </div>
+      <a class="btn btn-primary" href="../checkout-form/index.html">新建借出</a>
+    </div>
+    <div class="toolbar">
+      <select id="status">
+        <option value="">未关闭全部</option>
+        <option value="在借">在借</option>
+        <option value="超期">超期</option>
+      </select>
+    </div>
+    <div class="card table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>夹具</th><th>借用人</th><th>用途</th><th>预计归还</th><th>状态</th><th>操作</th></tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </main>
+  <script src="../mock/api.js"></script>
+  <script src="../js/shell.js"></script>
+  <script>
+    AptShell.mount("checkout-list");
+    const role = FixtureAPI.getRole();
+    function render() {
+      const rows = FixtureAPI.listCheckouts({ status: document.getElementById("status").value });
+      const tb = document.getElementById("tbody");
+      if (!rows.length) {
+        tb.innerHTML = `<tr><td colspan="6" class="empty">当前无在借 / 超期单据</td></tr>`;
+        return;
+      }
+      tb.innerHTML = rows.map((c) => {
+        const flag = c.status === "超期" ? "row-flag" : "";
+        const ret = role === "仓管" && c.status !== "已归还"
+          ? `<a class="btn btn-ghost" href="../return-form/index.html?checkoutId=${c.id}">归还核验</a>`
+          : "";
+        return `<tr class="${flag}">
+          <td><a class="code" href="../fixture-detail/index.html?id=${c.fixtureId}">${c.fixtureCode}</a></td>
+          <td>${c.borrowerName}</td>
+          <td>${c.purpose}</td>
+          <td>${c.expectedReturnDate}</td>
+          <td>${AptShell.badge(c.status)}</td>
+          <td>${ret}</td>
+        </tr>`;
+      }).join("");
+    }
+    document.getElementById("status").onchange = render;
+    render();
+  </script>
+</body>
+</html>

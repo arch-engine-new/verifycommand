@@ -1,0 +1,35 @@
+:root {
+  --apt-font-display: "IBM Plex Sans", "Source Han Sans SC", "Noto Sans SC", sans-serif;
+  --apt-font-body: "IBM Plex Sans", "Source Han Sans SC", "Noto Sans SC", sans-serif;
+  --apt-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --apt-bg: #0c1422;
+  --apt-bg-elevated: #141e30;
+  --apt-surface: #1b283c;
+  --apt-border: #2c3d58;
+  --apt-text: #e7eef8;
+  --apt-text-muted: #93a4bf;
+  --apt-primary: #2ec4ff;
+  --apt-primary-hover: #5ad2ff;
+  --apt-accent: #f0b429;
+  --apt-danger: #ff6b7a;
+  --apt-success: #3ecf8e;
+  --apt-warning: #f0b429;
+  --apt-radius-sm: 4px;
+  --apt-radius-md: 8px;
+  --apt-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --apt-focus-ring: 0 0 0 2px #0c1422, 0 0 0 4px #2ec4ff;
+
+  --font-family: var(--apt-font-body);
+  --font-size-base: 14px;
+  --color-text: var(--apt-text);
+  --color-text-secondary: var(--apt-text-muted);
+  --color-bg-layout: var(--apt-bg);
+  --color-primary: var(--apt-primary);
+  --color-primary-hover: var(--apt-primary-hover);
+  --color-border: var(--apt-border);
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}

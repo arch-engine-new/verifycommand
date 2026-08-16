@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>夹具台账</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/global.css" />
+</head>
+<body class="app-shell">
+  <main class="page">
+    <div class="page-header">
+      <div>
+        <h2>夹具台账</h2>
+        <p>主数据与实时状态。超期 / 锁定用色条 + 文案，不单靠颜色。</p>
+      </div>
+      <button class="btn btn-primary" id="addBtn">录入夹具</button>
+    </div>
+    <div id="msg"></div>
+    <div class="toolbar">
+      <input id="q" placeholder="搜索编码" />
+      <select id="status">
+        <option value="">全部状态</option>
+        <option>在库</option><option>在借</option><option>超期</option><option>维修</option><option>校准锁定</option>
+      </select>
+      <select id="type">
+        <option value="">全部类型</option>
+      </select>
+    </div>
+    <div class="card table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>编码</th><th>类型</th><th>状态</th><th>校准到期</th><th>操作</th></tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="card form-grid" id="editor" hidden>
+      <div class="field"><label>编码</label><input id="f-code" /></div>
+      <div class="field"><label>类型</label><select id="f-type"></select></div>
+      <div class="field"><label>校准到期日</label><input id="f-due" type="date" /></div>
+      <div class="form-actions">
+        <button class="btn" id="cancelAdd">取消</button>
+        <button class="btn btn-primary" id="saveAdd">保存</button>
+      </div>
+    </div>
+  </main>
+  <script src="../mock/api.js"></script>
+  <script src="../js/shell.js"></script>
+  <script>
+    AptShell.mount("fixture-list");
+    const role = FixtureAPI.getRole();
+    const typeSel = document.getElementById("type");
+    const fType = document.getElementById("f-type");
+    FixtureAPI.TYPES.forEach((t) => {
+      typeSel.insertAdjacentHTML("beforeend", `<option value="${t.value}">${t.label}</option>`);
+      fType.insertAdjacentHTML("beforeend", `<option value="${t.value}">${t.label}</option>`);
+    });
+    document.getElementById("addBtn").disabled = role === "班组长";
+
+    function flash(html, cls) {
+      document.getElementById("msg").innerHTML = html ? `<div class="alert ${cls}">${html}</div>` : "";
+    }
+
+    function render() {
+      const rows = FixtureAPI.listFixtures({
+        q: document.getElementById("q").value,
+        status: document.getElementById("status").value,
+        type: document.getElementById("type").value,
+      });
+      const tb = document.getElementById("tbody");
+      if (!rows.length) {
+        tb.innerHTML = `<tr><td colspan="5" class="empty">无匹配夹具</td></tr>`;
+        return;
+      }
+      tb.innerHTML = rows.map((fx) => {
+        const flag = fx.status === "超期" ? "row-flag" : fx.status === "校准锁定" ? "row-lock" : "";
+        const borrow = role === "班组长"
+          ? `<a class="btn btn-ghost" href="../checkout-form/index.html?fixtureId=${fx.id}">借出</a>`
+          : "";
+        const restore = role === "仓管" && fx.status === "维修"
+          ? `<button class="btn" data-restore="${fx.id}">改回在库</button>`
+          : "";
+        return `<tr class="${flag}">
+          <td class="code">${fx.code}</td>
+          <td>${fx.typeLabel}</td>
+          <td>${AptShell.badge(fx.status)}</td>
+          <td>${fx.calibrationDueDate}</td>
+          <td><a class="btn btn-ghost" href="../fixture-detail/index.html?id=${fx.id}">详情</a> ${borrow} ${restore}</td>
+        </tr>`;
+      }).join("");
+    }
+
+    ["q", "status", "type"].forEach((id) => {
+      document.getElementById(id).addEventListener("input", render);
+      document.getElementById(id).addEventListener("change", render);
+    });
+    document.getElementById("tbody").addEventListener("click", (e) => {
+      const id = e.target.getAttribute("data-restore");
+      if (!id) return;
+      if (!confirm("确认将该夹具从维修改回在库？")) return;
+      const r = FixtureAPI.restoreFromRepair(id);
+      flash(r.ok ? "已改回在库" : r.error, r.ok ? "alert-ok" : "alert-error");
+      render();
+    });
+    document.getElementById("addBtn").onclick = () => {
+      if (role === "班组长") {
+        flash("班组长不能维护夹具主数据或校准到期日。", "alert-error");
+        return;
+      }
+      document.getElementById("editor").hidden = false;
+    };
+    document.getElementById("cancelAdd").onclick = () => {
+      document.getElementById("editor").hidden = true;
+    };
+    document.getElementById("saveAdd").onclick = () => {
+      const r = FixtureAPI.upsertFixture({
+        code: document.getElementById("f-code").value,
+        type: document.getElementById("f-type").value,
+        calibrationDueDate: document.getElementById("f-due").value,
+      });
+      flash(r.ok ? "已录入 " + r.fixture.code : r.error, r.ok ? "alert-ok" : "alert-error");
+      if (r.ok) {
+        document.getElementById("editor").hidden = true;
+        render();
+      }
+    };
+    render();
+  </script>
+</body>
+</html>

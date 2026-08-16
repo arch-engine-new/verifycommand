@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>借出申请</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/global.css" />
+</head>
+<body class="app-shell">
+  <main class="page">
+    <div class="page-header">
+      <div>
+        <h2>借出申请</h2>
+        <p>系统拒绝他人占用与校准过期。失败原因必须可读；校准拒绝文案含「校准」。</p>
+      </div>
+    </div>
+    <div id="msg"></div>
+    <form class="card form-grid" id="form">
+      <div class="field">
+        <label>夹具</label>
+        <select id="fixtureId" required></select>
+      </div>
+      <div class="field">
+        <label>当前状态 / 校准到期</label>
+        <div id="hint" class="muted" style="padding-top:8px">选择夹具后显示</div>
+      </div>
+      <div class="field">
+        <label>借用人</label>
+        <input id="borrowerName" required placeholder="班组长姓名" />
+      </div>
+      <div class="field">
+        <label>预计归还日</label>
+        <input id="expectedReturnDate" type="date" required />
+      </div>
+      <div class="field span-2">
+        <label>用途</label>
+        <input id="purpose" required placeholder="本班生产用途" />
+      </div>
+      <div class="form-actions">
+        <a class="btn" href="../fixture-list/index.html">取消</a>
+        <button class="btn btn-primary" type="submit" id="submitBtn">提交借出</button>
+      </div>
+    </form>
+  </main>
+  <script src="../mock/api.js"></script>
+  <script src="../js/shell.js"></script>
+  <script>
+    AptShell.mount("checkout-form");
+    const role = FixtureAPI.getRole();
+    const msg = document.getElementById("msg");
+    const sel = document.getElementById("fixtureId");
+    const fixtures = FixtureAPI.listFixtures({});
+    const pre = AptShell.qs("fixtureId");
+    sel.innerHTML = fixtures.map((f) =>
+      `<option value="${f.id}" ${f.id === pre ? "selected" : ""}>${f.code} · ${f.typeLabel} · ${f.status}</option>`
+    ).join("");
+    document.getElementById("borrowerName").value = role === "班组长" ? "张班长" : "";
+    document.getElementById("expectedReturnDate").value = "2026-08-20";
+
+    function refreshHint() {
+      const fx = FixtureAPI.getFixture(sel.value);
+      if (!fx) return;
+      document.getElementById("hint").innerHTML =
+        AptShell.badge(fx.status) + " · 校准到期 " + fx.calibrationDueDate;
+    }
+    sel.addEventListener("change", refreshHint);
+    refreshHint();
+
+    if (role !== "班组长") {
+      msg.innerHTML = `<div class="alert alert-error">仅班组长可提交借出申请。请在顶栏切换角色。</div>`;
+      document.getElementById("submitBtn").disabled = true;
+    }
+
+    document.getElementById("form").onsubmit = (e) => {
+      e.preventDefault();
+      const r = FixtureAPI.createCheckout({
+        fixtureId: sel.value,
+        borrowerName: document.getElementById("borrowerName").value,
+        expectedReturnDate: document.getElementById("expectedReturnDate").value,
+        purpose: document.getElementById("purpose").value,
+      });
+      msg.innerHTML = `<div class="alert ${r.ok ? "alert-ok" : "alert-error"}">${r.ok ? "借出成功，已改为在借。" : r.error}</div>`;
+      if (r.ok) setTimeout(() => location.href = "../checkout-list/index.html", 600);
+    };
+  </script>
+</body>
+</html>

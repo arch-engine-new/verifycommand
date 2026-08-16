@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>归还核验</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/global.css" />
+</head>
+<body class="app-shell">
+  <main class="page">
+    <div class="page-header">
+      <div>
+        <h2>归还核验</h2>
+        <p>完好回库；损坏转入维修（不可再借，直到仓管改回在库）。</p>
+      </div>
+    </div>
+    <div id="msg"></div>
+    <form class="card form-grid" id="form">
+      <div class="field">
+        <label>在借单据</label>
+        <select id="checkoutId" required></select>
+      </div>
+      <div class="field">
+        <label>单据摘要</label>
+        <div id="hint" class="muted" style="padding-top:8px">选择单据后显示</div>
+      </div>
+      <div class="field span-2">
+        <label>核验结果</label>
+        <select id="condition" required>
+          <option value="完好">完好 — 回库</option>
+          <option value="损坏">损坏 — 转入维修</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <a class="btn" href="../checkout-list/index.html">取消</a>
+        <button class="btn btn-primary" type="submit" id="submitBtn">提交核验</button>
+      </div>
+    </form>
+  </main>
+  <script src="../mock/api.js"></script>
+  <script src="../js/shell.js"></script>
+  <script>
+    AptShell.mount("return-form");
+    const role = FixtureAPI.getRole();
+    const msg = document.getElementById("msg");
+    const sel = document.getElementById("checkoutId");
+    const open = FixtureAPI.listCheckouts({});
+    const pre = AptShell.qs("checkoutId");
+    if (!open.length) {
+      sel.innerHTML = `<option value="">无待核验单据</option>`;
+    } else {
+      sel.innerHTML = open.map((c) =>
+        `<option value="${c.id}" ${c.id === pre ? "selected" : ""}>${c.fixtureCode} · ${c.borrowerName} · ${c.status}</option>`
+      ).join("");
+    }
+    function refreshHint() {
+      const c = open.find((x) => x.id === sel.value);
+      document.getElementById("hint").textContent = c
+        ? c.fixtureCode + " / " + c.borrowerName + " / 预计归还 " + c.expectedReturnDate
+        : "无单据";
+    }
+    sel.addEventListener("change", refreshHint);
+    refreshHint();
+
+    if (role !== "仓管") {
+      msg.innerHTML = `<div class="alert alert-error">仅仓管可做归还核验。请在顶栏切换角色。</div>`;
+      document.getElementById("submitBtn").disabled = true;
+    }
+
+    document.getElementById("form").onsubmit = (e) => {
+      e.preventDefault();
+      const condition = document.getElementById("condition").value;
+      const confirmText = condition === "损坏"
+        ? "确认损坏并转入维修？维修态不可再借。"
+        : "确认完好归还并回库？";
+      if (!confirm(confirmText)) return;
+      const r = FixtureAPI.returnCheckout({ checkoutId: sel.value, condition });
+      msg.innerHTML = `<div class="alert ${r.ok ? "alert-ok" : "alert-error"}">${r.ok ? (condition === "损坏" ? "已转入维修" : "已回库") : r.error}</div>`;
+      if (r.ok) setTimeout(() => location.href = "../checkout-list/index.html", 600);
+    };
+  </script>
+</body>
+</html>

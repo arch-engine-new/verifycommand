@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>夹具详情</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/global.css" />
+</head>
+<body class="app-shell">
+  <main class="page" id="app"></main>
+  <script src="../mock/api.js"></script>
+  <script src="../js/shell.js"></script>
+  <script>
+    AptShell.mount("fixture-detail");
+    const role = FixtureAPI.getRole();
+    const id = AptShell.qs("id") || "fx-1001";
+    const fx = FixtureAPI.getFixture(id);
+    const app = document.getElementById("app");
+    if (!fx) {
+      app.innerHTML = `<div class="empty">夹具不存在</div>`;
+    } else {
+      const canEditDue = role !== "班组长";
+      const canBorrow = role === "班组长" && fx.status === "在库";
+      app.innerHTML = `
+        <div class="page-header">
+          <div>
+            <h2>${fx.code} · ${fx.typeLabel}</h2>
+            <p>主数据与借还历史。当前 ${AptShell.badge(fx.status)}</p>
+          </div>
+          <div>
+            <a class="btn" href="../fixture-list/index.html">返回台账</a>
+            ${canBorrow ? `<a class="btn btn-primary" href="../checkout-form/index.html?fixtureId=${fx.id}">借出</a>` : ""}
+          </div>
+        </div>
+        <div id="msg"></div>
+        <div class="card form-grid">
+          <div class="field"><label>编码</label><input value="${fx.code}" disabled /></div>
+          <div class="field"><label>类型</label><input value="${fx.typeLabel}" disabled /></div>
+          <div class="field"><label>状态</label><div style="padding-top:8px">${AptShell.badge(fx.status)}</div></div>
+          <div class="field"><label>校准到期日</label><input id="due" type="date" value="${fx.calibrationDueDate}" ${canEditDue ? "" : "disabled"} /></div>
+          ${canEditDue ? `<div class="form-actions"><button class="btn btn-primary" id="saveDue">保存校准到期日</button></div>` : ""}
+        </div>
+        <h3 style="margin:24px 0 8px;font-size:14px;color:var(--apt-text-muted)">借还历史</h3>
+        <div class="card table-wrap history">
+          <table class="data">
+            <thead><tr><th>借用人</th><th>用途</th><th>预计归还</th><th>状态</th><th>归还判定</th></tr></thead>
+            <tbody>
+              ${fx.history.length ? fx.history.map((h) => `<tr class="${h.status === "超期" ? "row-flag" : ""}">
+                <td>${h.borrowerName}</td><td>${h.purpose}</td><td>${h.expectedReturnDate}</td>
+                <td>${AptShell.badge(h.status)}</td><td>${h.returnCondition || "—"}</td>
+              </tr>`).join("") : `<tr><td colspan="5" class="empty">暂无借还记录</td></tr>`}
+            </tbody>
+          </table>
+        </div>`;
+      const save = document.getElementById("saveDue");
+      if (save) save.onclick = () => {
+        const r = FixtureAPI.upsertFixture({ id: fx.id, code: fx.code, type: fx.type, calibrationDueDate: document.getElementById("due").value });
+        document.getElementById("msg").innerHTML = `<div class="alert ${r.ok ? "alert-ok" : "alert-error"}">${r.ok ? "已保存并重算锁定" : r.error}</div>`;
+        if (r.ok) setTimeout(() => location.reload(), 400);
+      };
+    }
+  </script>
+</body>
+</html>

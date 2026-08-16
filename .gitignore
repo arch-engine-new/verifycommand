@@ -1,0 +1,32 @@
+# APT 内部文件（不推送到产品仓库）
+.ai/
+.apt/
+.zcode/
+.agents/
+.claude/
+.cursor/
+.qoder/
+.opencode/
+.trae/
+
+# 依赖与构建产物
+node_modules/
+dist/
+build/
+out/
+coverage/
+
+# 环境与密钥
+.env
+.env.local
+*.secret
+arch.secrets.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 系统
+.DS_Store
+Thumbs.db
