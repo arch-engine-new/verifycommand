@@ -4,12 +4,12 @@
 
 | page-id | title | handoff | approved | synced | notes |
 |---------|-------|---------|----------|--------|-------|
-| fixture-list | 夹具台账 | done | no | no | source=generated；风格 baoyu-shift-console |
-| fixture-detail | 夹具详情 | done | no | no | source=generated |
-| checkout-form | 借出申请 | done | no | no | 必验：占用冲突、校准拒绝 |
-| checkout-list | 在借 / 超期清单 | done | no | no | 必验：超期列表 |
-| return-form | 归还核验 | done | no | no | 必验：损坏→维修 |
-| calibration-board | 校准到期看板 | done | no | no | 必验：到期锁定 |
+| fixture-list | 夹具台账 | done | yes | no | 2026-08-17 PM 过 |
+| fixture-detail | 夹具详情 | done | yes | no | 2026-08-17 PM 过 |
+| checkout-form | 借出申请 | done | yes | no | 2026-08-17 PM 过 |
+| checkout-list | 在借 / 超期清单 | done | yes | no | 2026-08-17 PM 过 |
+| return-form | 归还核验 | done | yes | no | 2026-08-17 PM 过 |
+| calibration-board | 校准到期看板 | done | yes | no | 2026-08-17 PM 过 |
 
 **列说明**
 
