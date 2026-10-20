@@ -1,1 +1,502 @@
-{"contracts":[],"missingRequests":[]}
+{
+  "contracts": [
+    {
+      "name": "requestParams",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/mock/_util.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "RequestOptions",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/axios.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "Result",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/axios.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "UploadFileParams",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/axios.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ErrorMessageMode",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/axios.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "MenuSetting",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/config.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "MultiTabsSetting",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/config.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "HeaderSetting",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/config.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "LocaleSetting",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/config.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "TransitionSetting",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/config.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ProjectConfig",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/config.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "LocaleType",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/config.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "MainAppProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/main.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "LockInfo",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/store.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ErrorLogInfo",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/store.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "UserInfo",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/store.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "LoginInfo",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/store.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "DynamicProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/types/utils.d.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "AppRouteRecordRaw",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/router/types.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "Menu",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/router/types.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "MenuModule",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/router/types.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "Component",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/router/types.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "AppRouteModule",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/router/types.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "Emitter",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/utils/mitt.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "BasicPageParams",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/api/model/baseModel.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "BasicFetchResult",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/api/model/baseModel.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ModalOptionsEx",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/hooks/web/useMessage.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "Options",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/utils/cache/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "Persistent",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/utils/cache/persistent.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "UploadApiResult",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/api/sys/model/uploadModel.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "LoginParams",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/api/sys/model/userModel.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "GetUserInfoModel",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/api/sys/model/userModel.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ContextMenuItem",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/ContextMenu/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "DescItem",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Description/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "DropMenu",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Dropdown/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ReturnMethods",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Drawer/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "JVxeTableInstance",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/jeecg/JVxeTable/types.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "LoadingProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Loading/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "MenuState",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Menu/src/types.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "RenderQrCodeParams",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Qrcode/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ActionItem",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Tree_backup/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "TreeItem",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Tree_backup/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ReplaceFields",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Tree_backup/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "InsertNodeParams",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Tree_backup/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "Keys",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Tree_backup/src/typing.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "AxiosCanceler",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/utils/http/axios/axiosCancel.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "CreateAxiosOptions",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/utils/http/axios/axiosTransform.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "RenderCallbackParams",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Form/src/types/form.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ButtonProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Form/src/types/form.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "FormActionType",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Form/src/types/form.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "FormProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Form/src/types/form.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "FormSchema",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Form/src/types/form.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "Rule",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Form/src/types/form.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ColEx",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Form/src/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ComponentType",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Form/src/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "PaginationProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Table/src/types/pagination.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "TableRowSelection",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Table/src/types/table.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "TableCustomRecord",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Table/src/types/table.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "SorterResult",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Table/src/types/table.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "FetchParams",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Table/src/types/table.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "TableActionType",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Table/src/types/table.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "BasicTableProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Table/src/types/table.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "BasicColumn",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/Table/src/types/table.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "JVxeRefs",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/jeecg/JVxeTable/src/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "JVxeDataProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/jeecg/JVxeTable/src/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "JVxeTableProps",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/jeecg/JVxeTable/src/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "JVxeTableMethods",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/jeecg/JVxeTable/src/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "JVxeVueComponent",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/jeecg/JVxeTable/src/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "JVxeColumn",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/components/jeecg/JVxeTable/src/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "ExtConfigType",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/views/super/online/cgform/types/index.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    },
+    {
+      "name": "JeecgTag",
+      "description": "",
+      "tsFilePath": "backend/jeecgboot-vue3/src/views/super/airag/aiapp/chat/jeecg-tags/types.ts",
+      "registeredAt": "2026-10-20T17:44:38.388Z",
+      "source": "auto-scan"
+    }
+  ],
+  "missingRequests": []
+}

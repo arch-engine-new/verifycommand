@@ -2,7 +2,7 @@
 
 > **Spec:** `docs/superpowers/specs/2026-10-20-paycenter-s1-foundation-design.md`
 > **Command:** `/plan-from-spec`
-> **Status:** draft
+> **Status:** approved
 
 **Goal:** 交付可启动的 `jeecg-module-paycenter` 模块及其全部基础设施组件与初始化数据，供 S2–S5 直接复用。
 
