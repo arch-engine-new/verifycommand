@@ -1,0 +1,24 @@
+{
+    "pageId":  "logs",
+    "title":  "操作日志",
+    "source":  "live-project",
+    "sourceFile":  "prototype/paycenter-admin/index.html",
+    "sourceAnchor":  "#page-logs",
+    "route":  "/paycenter/logs",
+    "prd":  [
+                "paycenter/20-首筑操作后台设计.md"
+            ],
+    "prdSections":  [
+                        "§2 角色与权限（实现口径 JeecgBoot）",
+                        "§4 P7",
+                        "§5 A12",
+                        "§9.1 全局交互",
+                        "§9.7 P7 操作日志"
+                    ],
+    "techStack":  "JeecgBoot",
+    "logicFile":  "designs/v0/logs/page.logic.md",
+    "reconcile":  "manual (reconcile_page_logic skipped: llmUploadConsent not set)",
+    "status":  "approved",
+    "generatedAt":  "2026-10-19T15:34:02Z",
+    "approvedAt":  "2026-10-19T23:38:05+08:00"
+}

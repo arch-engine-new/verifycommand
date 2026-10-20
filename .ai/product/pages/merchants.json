@@ -1,0 +1,44 @@
+{
+  "pageId": "merchants",
+  "title": "商户管理",
+  "capabilities": [
+    "dict_options",
+    "list",
+    "payment"
+  ],
+  "signals": [
+    {
+      "kind": "payment",
+      "excerpt": "> 支付方式只有 3 个：微信 WECHAT / 支付宝 ALIPAY / 银行卡 UNIONPAY_CARD（借记卡和贷记卡不分开）。",
+      "path": "designs/v0/merchants/page.logic.md"
+    },
+    {
+      "kind": "list",
+      "excerpt": "> 技术栈 JeecgBoot，界面按 Jeecg Vue3（Ant Design Vue）列表页 + 弹窗表单风格；原型只用来确定结构、字段和交互。",
+      "path": "designs/v0/merchants/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| feeBearer | Select | dict | `fee_bearer`（原型选项：分账优先扣（物业承担）/ 首筑承担 / 按商户约定） | itemValue | itemText | 无 | 打开弹窗时 |",
+      "path": "designs/v0/merchants/page.logic.md"
+    }
+  ],
+  "sourcePath": "designs/v0/merchants/page.logic.md",
+  "contentHash": "2bca50522214b1754580ded07342b46f2503f5fad078b47398073a4afa360443",
+  "optionSources": [
+    {
+      "field": "feeBearer",
+      "control": "Select",
+      "source": "dict",
+      "intentApiOrDictType": "`fee_bearer`（原型选项：分账优先扣（物业承担）/ 首筑承担 / 按商户约定）"
+    }
+  ],
+  "archObligations": [
+    {
+      "kind": "dict_catalog",
+      "ref": "`fee_bearer`（原型选项：分账优先扣（物业承担）/ 首筑承担 / 按商户约定）",
+      "storage": "db_required",
+      "pageId": "merchants"
+    }
+  ]
+}

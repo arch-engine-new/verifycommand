@@ -1,0 +1,8 @@
+{
+  "id": "jeecg-boot",
+  "remote": "https://github.com/jeecgboot/JeecgBoot",
+  "pin": "main",
+  "spdx": "Apache-2.0",
+  "clonedAt": "2026-10-19T15:48:45.079Z",
+  "targetDir": "backend"
+}

@@ -1,0 +1,76 @@
+[arch-engine][INFO] start-init: begin { projectRoot: 'D:\\software\\dog-food' }
+[arch-engine][INFO] start-init: config loaded {
+  embeddingModel: 'text-embedding-v3',
+  embeddingBaseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+  embeddingApiKeyEnv: 'DASHSCOPE_API_KEY',
+  chunkingModel: 'glm-5.3-flash',
+  chunkingBaseUrl: 'https://open.bigmodel.cn/api/coding/paas/v4',
+  chunkingApiKeyEnv: 'XF_MAAS_API_KEY'
+}
+[arch-engine][INFO] start-init: [scope] frontend: report-only roots=[] exclude=[] | 启发式无把握（no-manifest）：AI 兜底候选呈报，不落盘
+[arch-engine][INFO] start-init: [scope] java: default roots=[] exclude=[] | 无 Java manifest 信号，模块发现维持现状
+[arch-engine][INFO] start-init: [scope] go: default roots=[] exclude=[] | 无 manifest 信号，仓库级行为维持
+[arch-engine][INFO] start-init: [scope] python: default roots=[] exclude=[] | 无 manifest 信号，仓库级行为维持
+[arch-engine][INFO] start-init: scanning project
+[arch-engine][INFO] start-init: java path rules {
+  confidence: 'low',
+  contextPath: '/jeecg-boot',
+  prefixCount: 0,
+  prefixes: [],
+  pathRulesHash: '4a9da7dcaf6e941883c03b7f39388130fcbfaead9ee190f8b0c3043c777097f7'
+}
+[arch-engine][INFO] frontend: 无前端包，跳过（no workspace, no root package.json, and no frontend child packages discovered）
+[arch-engine][INFO] start-init: java asset coverage {
+  mode: 'error',
+  javaFiles: 2996,
+  javaAssets: 2501,
+  javaSkipped: 167,
+  javaCovered: 328,
+  javaUncovered: 0
+}
+[arch-engine][INFO] start-init: scan complete {
+  modules: 29,
+  apis: 2509,
+  rpcs: 29,
+  packages: 0,
+  incremental: true,
+  openapiFiles: 0,
+  openapiEndpoints: 0,
+  skippedSpecFiles: 0,
+  javaFiles: 2996,
+  javaAssets: 2501,
+  javaSkipped: 167,
+  javaCovered: 328,
+  javaUncovered: 0
+}
+[arch-engine][INFO] start-init: entity scan complete { entities: 214, relations: 1 }
+[arch-engine][INFO] start-init: flow-derive complete { nodes: 529, edges: 174 }
+[arch-engine][WARN] start-init: call-graph 降级（缺省关）— scanners.callGraph=true 开启后重跑 start-init {
+  enabled: false,
+  degraded: true,
+  note: 'call-graph 降级（缺省关，scanners.callGraph=true 开启后重跑 start-init）'
+}
+[arch-engine][INFO] start-init: incremental mode {
+  changedFiles: 0,
+  affectedModules: [],
+  affectedPackages: [],
+  newPackages: 0,
+  newModules: 0
+}
+[arch-engine][WARN] start-init: scan completed with failed modules { failedCount: 1, mode: 'full' }
+[arch-engine][INFO] start-init: done {
+  chunkCount: 0,
+  apiCount: 2509,
+  moduleCount: 29,
+  assetCardCount: 0,
+  fallbackCardCount: 0,
+  incremental: true,
+  isResume: false,
+  failedCount: 1,
+  scanMode: 'full',
+  sourceFileCount: 1718,
+  timedOut: false
+}
+[arch-engine][WARN] start-init: contract-gate: unsupported language 'unknown' (no scanner); not counted
+[arch-engine][WARN] start-init: contract-gate: repository language is unknown or unsupported; scan cannot produce contracts
+✅ start-init complete: 2509 APIs, 29 modules, 0 chunks

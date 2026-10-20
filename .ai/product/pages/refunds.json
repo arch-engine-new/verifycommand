@@ -1,0 +1,67 @@
+{
+  "pageId": "refunds",
+  "title": "退款处理",
+  "capabilities": [
+    "dict_options",
+    "iot",
+    "list",
+    "payment"
+  ],
+  "signals": [
+    {
+      "kind": "payment",
+      "excerpt": "| 回显原单 | 弹窗内输入原支付单号后点击「回显原单」 | 调 A6 支付单详情，显示原单信息条：原单号、商户、金额、已退金额、可退金额（一期=全额）、原单状态、支付成功时间；不可退时显示原因并禁用提交 | 无 | 全部登录用户 |",
+      "path": "designs/v0/refunds/page.logic.md"
+    },
+    {
+      "kind": "list",
+      "excerpt": "…示或退款单联动跳转 | 调 A7 退款单列表（分页），渲染警示条与列表；切换菜单即刷新（20 §9.1） | 无 | 全部登录用户（管理员、运营） |",
+      "path": "designs/v0/refunds/page.logic.md"
+    },
+    {
+      "kind": "iot",
+      "excerpt": "…und_amount 必须 = 原单 total_amount；PRD 要求，原型未实现） |",
+      "path": "designs/v0/refunds/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| status | Select | dict | refund_order_status | REFUNDING / REFUND_SUCCESS / REFUND_FAIL | 退款中 / 退款成功 / 退款失败 | 无 | mount |",
+      "path": "designs/v0/refunds/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| manualCheck | Select | dict | yn | 1 / 0 | 是 / 否 | 无 | mount |",
+      "path": "designs/v0/refunds/page.logic.md"
+    }
+  ],
+  "sourcePath": "designs/v0/refunds/page.logic.md",
+  "contentHash": "198e7f3ab6c9d198f7b5cbacd101f09260dd8281348e8d77223b9bfef8f26b78",
+  "optionSources": [
+    {
+      "field": "status",
+      "control": "Select",
+      "source": "dict",
+      "intentApiOrDictType": "refund_order_status"
+    },
+    {
+      "field": "manualCheck",
+      "control": "Select",
+      "source": "dict",
+      "intentApiOrDictType": "yn"
+    }
+  ],
+  "archObligations": [
+    {
+      "kind": "dict_catalog",
+      "ref": "refund_order_status",
+      "storage": "db_required",
+      "pageId": "refunds"
+    },
+    {
+      "kind": "dict_catalog",
+      "ref": "yn",
+      "storage": "db_required",
+      "pageId": "refunds"
+    }
+  ]
+}

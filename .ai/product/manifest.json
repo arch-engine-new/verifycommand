@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "pages": [
+    "agreements",
+    "dashboard",
+    "login",
+    "logs",
+    "merchants",
+    "refunds",
+    "trades"
+  ],
+  "updatedAt": "2026-10-19T15:36:32.539Z"
+}

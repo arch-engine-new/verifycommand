@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "commit": "a756f6099797408125a2d3c0886104750a63605e",
+  "branch": "master",
+  "scannedAt": "2026-10-19T15:36:32.962Z",
+  "fileHashes": {
+    "designs/v0/_pages.md": "4c854dafeeca0a370e8da07ab7b7321ec9ba17ba3ea5e1bba2ce32a025f337ca",
+    "designs/v0/agreements/page.logic.md": "531e6e24fe45b162a5f76fcc80a4df58c50c2586f39c32ca174ad3db1c9db22d",
+    "designs/v0/dashboard/page.logic.md": "0223d8614f84afaeed1f46130ca29d055480b6a0ac48d8b129dc6df471ae862d",
+    "designs/v0/login/page.logic.md": "5cd672b49cc0dc9b2ddf55d17a0deb5c6c0664167a2f1a9cbbb88dfaf926717d",
+    "designs/v0/logs/page.logic.md": "b4a6a2265ebe9f70aeff2bc188c9b135173ee77e5842a13ddcb88c1d988f33f8",
+    "designs/v0/merchants/page.logic.md": "2bca50522214b1754580ded07342b46f2503f5fad078b47398073a4afa360443",
+    "designs/v0/refunds/page.logic.md": "198e7f3ab6c9d198f7b5cbacd101f09260dd8281348e8d77223b9bfef8f26b78",
+    "designs/v0/trades/page.logic.md": "31a261154ab17a5e83ac60ae0f4375f0c485304a69e9447f07168691d758b123"
+  }
+}

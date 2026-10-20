@@ -1,0 +1,34 @@
+{
+  "pageId": "agreements",
+  "title": "协议留痕",
+  "capabilities": [
+    "export",
+    "gis",
+    "list",
+    "payment"
+  ],
+  "signals": [
+    {
+      "kind": "payment",
+      "excerpt": "> 本页**只读**，供法务/客服响应争议（20 §4 P6、§9.6）。数据来自支付中心库 `user_agreement_consent`（14 §6.2），该表**永久保留**（14 §6.4）。",
+      "path": "designs/v0/agreements/page.logic.md"
+    },
+    {
+      "kind": "export",
+      "excerpt": "> 本页无新增/编辑/删除/导出操作：留痕为法律证据，后台不可改动（20 §4 P6「只读」）。",
+      "path": "designs/v0/agreements/page.logic.md"
+    },
+    {
+      "kind": "list",
+      "excerpt": "> 技术栈 JeecgBoot，界面按 Jeecg Vue3（Ant Design Vue）列表页风格；原型只用来确定结构、字段和交互。",
+      "path": "designs/v0/agreements/page.logic.md"
+    },
+    {
+      "kind": "gis",
+      "excerpt": "…PRD 不一致：原型演示数据用了 `REGISTER`，PRD 枚举无此值，以 PRD 的 `LOGIN` 为准） | DataTable 列（字典翻译） |",
+      "path": "designs/v0/agreements/page.logic.md"
+    }
+  ],
+  "sourcePath": "designs/v0/agreements/page.logic.md",
+  "contentHash": "531e6e24fe45b162a5f76fcc80a4df58c50c2586f39c32ca174ad3db1c9db22d"
+}

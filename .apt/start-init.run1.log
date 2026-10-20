@@ -1,0 +1,1704 @@
+[arch-engine][INFO] start-init: begin { projectRoot: 'D:\\software\\dog-food' }
+[arch-engine][INFO] start-init: config loaded {
+  embeddingModel: 'text-embedding-v3',
+  embeddingBaseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+  embeddingApiKeyEnv: 'DASHSCOPE_API_KEY',
+  chunkingModel: 'glm-5.3-flash',
+  chunkingBaseUrl: 'https://open.bigmodel.cn/api/coding/paas/v4',
+  chunkingApiKeyEnv: 'XF_MAAS_API_KEY'
+}
+[arch-engine][INFO] start-init: [scope] frontend: report-only roots=[] exclude=[] | 启发式无把握（no-manifest）：AI 兜底候选呈报，不落盘
+[arch-engine][INFO] start-init: [scope] java: default roots=[] exclude=[] | 无 Java manifest 信号，模块发现维持现状
+[arch-engine][INFO] start-init: [scope] go: default roots=[] exclude=[] | 无 manifest 信号，仓库级行为维持
+[arch-engine][INFO] start-init: [scope] python: default roots=[] exclude=[] | 无 manifest 信号，仓库级行为维持
+[arch-engine][INFO] start-init: cleaning .ai/arch output
+[arch-engine][INFO] start-init: scanning project
+[arch-engine][INFO] start-init: java path rules {
+  confidence: 'low',
+  contextPath: '/jeecg-boot',
+  prefixCount: 0,
+  prefixes: [],
+  pathRulesHash: '4a9da7dcaf6e941883c03b7f39388130fcbfaead9ee190f8b0c3043c777097f7'
+}
+[arch-engine][INFO] frontend: 无前端包，跳过（no workspace, no root package.json, and no frontend child packages discovered）
+[arch-engine][INFO] start-init: java asset coverage {
+  mode: 'error',
+  javaFiles: 2996,
+  javaAssets: 2501,
+  javaSkipped: 167,
+  javaCovered: 328,
+  javaUncovered: 0
+}
+[arch-engine][INFO] start-init: scan complete {
+  modules: 29,
+  apis: 2509,
+  rpcs: 29,
+  packages: 0,
+  incremental: false,
+  openapiFiles: 0,
+  openapiEndpoints: 0,
+  skippedSpecFiles: 0,
+  javaFiles: 2996,
+  javaAssets: 2501,
+  javaSkipped: 167,
+  javaCovered: 328,
+  javaUncovered: 0
+}
+[arch-engine][INFO] start-init: entity scan complete { entities: 214, relations: 1 }
+[arch-engine][INFO] start-init: flow-derive complete { nodes: 529, edges: 174 }
+[arch-engine][INFO] start-init: writing base markdown and index
+[arch-engine][WARN] start-init: call-graph 降级（缺省关）— scanners.callGraph=true 开启后重跑 start-init {
+  enabled: false,
+  degraded: true,
+  note: 'call-graph 降级（缺省关，scanners.callGraph=true 开启后重跑 start-init）'
+}
+[arch-engine][INFO] module-batch: summarize { scope: 'backend', moduleSlug: 'jeecg-boot', candidateCount: 829 }
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4230,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3985,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 1539 (line 22 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2098,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2342,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4856,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3457,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3474,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4646,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4438 (line 62 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3191,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1910,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6971,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3701 (line 52 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2813,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 4613,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 4,
+  left: 2,
+  right: 2,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 5296 (line 115 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 2,
+  promptChars: 2540,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 2,
+  promptChars: 2528,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5066,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6242,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6022,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4584,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3660 (line 52 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2591,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2448,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4096,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4566 (line 129 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1991,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2560,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3974,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4401,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3686,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4199,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4801,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5161,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3323 (line 42 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3366,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2250,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 7157,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 6268 (line 72 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3128,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 4484,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3567,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5882,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5049,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4809 (line 62 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2566,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2938,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4273,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3074 (line 42 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2505,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2223,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5207,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3035 (line 42 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2832,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2830,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4966,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4813,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4439 (line 62 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2194,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3074,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 4,
+  left: 2,
+  right: 2,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4081 (line 102 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 2,
+  promptChars: 1510,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 2,
+  promptChars: 2019,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4215,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3258,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5397,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: 'Summarize card count mismatch: expected 8, got 44'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2056,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3796,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3647,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4796,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3759 (line 1 column 3760)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2995,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2256,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3387,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4486,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3209,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3259,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 2384 (line 42 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1939,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1775,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3097,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3047,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3573,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3145,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3252,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3168,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch failed after retries, using fallback cards {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  attempts: 1,
+  error: 'Summarize response missing message content'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3130,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4517 (line 139 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1827,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1758,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3091,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4146 (line 72 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1765,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1781,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3607,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3077 (line 93 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1898,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2164,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4110,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 5383 (line 72 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2491,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2074,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5215,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3215,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3548,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4995,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5162,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4383,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 1922 (line 1 column 1923)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2750,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2088,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4866,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4232 (line 1 column 4233)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2051,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3270,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3960,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch failed after retries, using fallback cards {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  attempts: 1,
+  error: 'Summarize response missing message content'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3548,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4255,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3830 (line 62 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1844,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2866,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4023,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch failed after retries, using fallback cards {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  attempts: 1,
+  error: 'Summarize response missing message content'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3147,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3269,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3133,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3769,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 5313 (line 72 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2202,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2022,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3230,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4599,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4721 (line 140 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2717,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2337,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3480,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3237,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3476,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4710,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5354,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3355,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3147,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4684 (line 72 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1779,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1823,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3135,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 2931,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6956,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3169 (line 42 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2245,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 5166,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5342,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4032,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4354,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 7069,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch failed after retries, using fallback cards {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  attempts: 1,
+  error: 'Summarize response missing message content'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4833,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6258,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 2006 (line 22 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 4095,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2618,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 7051,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 1957 (line 1 column 1958)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3766,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3740,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6822,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 5094 (line 1 column 5095)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 4044,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3233,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 8659,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3470 (line 32 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 5207,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3907,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3761,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 5961 (line 194 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 1741,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2475,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3709,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5289,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 872 (line 27 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2740,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3004,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6140,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4984 (line 143 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2677,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3918,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4961,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 3543 (line 1 column 3544)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2353,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3063,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6135,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4262 (line 1 column 4263)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2446,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 4144,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5980,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 9540,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 5970 (line 178 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 5761,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 4234,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 6649,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4407,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5554,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 5488 (line 1 column 5489)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2610,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3399,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5274,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4673 (line 1 column 4674)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2938,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2791,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 12318,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5000,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4040 (line 52 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3164,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 2291,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5942,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 5710,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][WARN] summarize batch split after failure {
+  moduleSlug: 'jeecg-boot',
+  batchSize: 8,
+  left: 4,
+  right: 4,
+  error: "Summarize response is not valid JSON: Expected ',' or ']' after array element in JSON at position 4793 (line 62 column 6)"
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3142,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 4,
+  promptChars: 3023,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4770,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3826,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4232,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 4628,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3616,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 8,
+  promptChars: 3725,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] summarize request {
+  moduleSlug: 'jeecg-boot',
+  candidates: 5,
+  promptChars: 2682,
+  jsonMode: true,
+  model: 'glm-5.3-flash'
+}
+[arch-engine][INFO] module-batch: embedding { scope: 'backend', moduleSlug: 'jeecg-boot', chunkCount: 829 }
+[arch-engine][INFO] embedding: start {
+  totalTexts: 829,
+  batchSize: 10,
+  batchCount: 83,
+  model: 'text-embedding-v3'
+}
+[arch-engine][INFO] embedding: calling API {
+  batchIndex: 1,
+  batchSize: 10,
+  model: 'text-embedding-v3',
+  baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+  attempt: 1
+}
+[arch-engine][WARN] start-init: module batch failed, continuing { slug: 'jeecg-boot', error: 'TypeError: fetch failed' }
+[arch-engine][WARN] start-init: scan timeout reached — wrapping up (remaining modules stay pending for resume) { timeoutMs: 600000, pendingFrom: 'jeecg-boot-base-core' }
+[arch-engine][WARN] start-init: overview chunking/embedding skipped (scan timed out)
+[arch-engine][WARN] start-init: scan timed out — checkpoint kept, re-run start-init to resume pending units { failedCount: 1, mode: 'full', scanMode: 'light' }
+[arch-engine][WARN] start-init: summarize fallback cards produced (report FAIL) { fallbackCardCount: 32 }
+[arch-engine][INFO] start-init: done {
+  chunkCount: 0,
+  apiCount: 2509,
+  moduleCount: 29,
+  assetCardCount: 0,
+  fallbackCardCount: 32,
+  incremental: false,
+  isResume: false,
+  failedCount: 1,
+  scanMode: 'light',
+  sourceFileCount: 1718,
+  timedOut: true
+}
+[arch-engine][WARN] start-init: contract-gate: unsupported language 'unknown' (no scanner); not counted
+[arch-engine][WARN] start-init: contract-gate: repository language is unknown or unsupported; scan cannot produce contracts
+✅ start-init complete: 2509 APIs, 29 modules, 0 chunks
+⚠️ 大仓（1718 文件）→ light 模式（夜间可 --full 全量）

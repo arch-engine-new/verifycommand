@@ -1,0 +1,44 @@
+{
+  "pageId": "logs",
+  "title": "操作日志",
+  "capabilities": [
+    "dict_options",
+    "list",
+    "payment"
+  ],
+  "signals": [
+    {
+      "kind": "payment",
+      "excerpt": "> 支付方式口径：借记/贷记卡已合并为一个支付方式「银行卡」（UNIONPAY_CARD），日志中支付方式开关变更的对象/diff 统一写「银行卡」。",
+      "path": "designs/v0/logs/page.logic.md"
+    },
+    {
+      "kind": "list",
+      "excerpt": "…Vue3（Ant Design Vue）列表页风格（查询区 + BasicTable + 分页），原型仅作结构/字段/交互依据。",
+      "path": "designs/v0/logs/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| actionFilter | Select | dict | `pay_admin_log_action`（Jeecg 数据字典） | itemValue（LOGIN / MCH_ADD / MCH_EDIT / MCH_TOGGLE / SWITCH_CHANGE / LIMIT_CHANGE / REFUND_CREATE / REFUND_RETRY / AGREEMENT_CONFIG） | itemText（登录 / 商户新增 / 商户编辑 / 商户启停 / 开关变更 / 限额变更 / 退款发起 / 退款重试 / 协议配置变更） | 无 | mount |",
+      "path": "designs/v0/logs/page.logic.md"
+    }
+  ],
+  "sourcePath": "designs/v0/logs/page.logic.md",
+  "contentHash": "b4a6a2265ebe9f70aeff2bc188c9b135173ee77e5842a13ddcb88c1d988f33f8",
+  "optionSources": [
+    {
+      "field": "actionFilter",
+      "control": "Select",
+      "source": "dict",
+      "intentApiOrDictType": "`pay_admin_log_action`（Jeecg 数据字典）"
+    }
+  ],
+  "archObligations": [
+    {
+      "kind": "dict_catalog",
+      "ref": "`pay_admin_log_action`（Jeecg 数据字典）",
+      "storage": "db_required",
+      "pageId": "logs"
+    }
+  ]
+}

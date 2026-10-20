@@ -1,0 +1,90 @@
+{
+  "pageId": "trades",
+  "title": "交易查询",
+  "capabilities": [
+    "dict_options",
+    "export",
+    "iot",
+    "list",
+    "payment"
+  ],
+  "signals": [
+    {
+      "kind": "payment",
+      "excerpt": "…stPayOrders` 加载第 1 页支付单列表（切换菜单即刷新，20 §9.1）。原型进入后列表区 `#tradeTable` 为空、从未渲染：PRD 要求，原型未实现 | 无 | 全部登录用户（管理员、运营） |",
+      "path": "designs/v0/trades/page.logic.md"
+    },
+    {
+      "kind": "export",
+      "excerpt": "| 导出 CSV | 点击「导出 CSV」按钮 | 一期不提供：按钮置灰或点击 toast「CSV 导出二期提供」（与原型一致）。二期接入导出接口 | 无 | 全部登录用户 |",
+      "path": "designs/v0/trades/page.logic.md"
+    },
+    {
+      "kind": "list",
+      "excerpt": "…ayOrders` 加载第 1 页支付单列表（切换菜单即刷新，20 §9.1）。原型进入后列表区 `#tradeTable` 为空、从未渲染：PRD 要求，原型未实现 | 无 | 全部登录用户（管理员、运营） |",
+      "path": "designs/v0/trades/page.logic.md"
+    },
+    {
+      "kind": "iot",
+      "excerpt": "| total_amount | number（分，展示为元 2 位小数 + ¥ 千分位） | yes | 表格列「金额」 | DataTable 列 |",
+      "path": "designs/v0/trades/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| payMethod | Select | dict | pay_method | WECHAT / ALIPAY / UNIONPAY_CARD | 微信 / 支付宝 / 银行卡 | 无 | mount |",
+      "path": "designs/v0/trades/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| status | Select | dict | pay_order_status | WAIT_PAY / PAID / REFUNDING / REFUNDED / CLOSED | 待支付 / 支付成功 / 退款中 / 已退款 / 已关闭 | 无 | mount |",
+      "path": "designs/v0/trades/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| manualCheck | Select | dict | yn（Jeecg 内置是/否字典） | 1 / 0 | 是 / 否 | 无 | mount |",
+      "path": "designs/v0/trades/page.logic.md"
+    }
+  ],
+  "sourcePath": "designs/v0/trades/page.logic.md",
+  "contentHash": "31a261154ab17a5e83ac60ae0f4375f0c485304a69e9447f07168691d758b123",
+  "optionSources": [
+    {
+      "field": "payMethod",
+      "control": "Select",
+      "source": "dict",
+      "intentApiOrDictType": "pay_method"
+    },
+    {
+      "field": "status",
+      "control": "Select",
+      "source": "dict",
+      "intentApiOrDictType": "pay_order_status"
+    },
+    {
+      "field": "manualCheck",
+      "control": "Select",
+      "source": "dict",
+      "intentApiOrDictType": "yn（Jeecg 内置是/否字典）"
+    }
+  ],
+  "archObligations": [
+    {
+      "kind": "dict_catalog",
+      "ref": "pay_method",
+      "storage": "db_required",
+      "pageId": "trades"
+    },
+    {
+      "kind": "dict_catalog",
+      "ref": "pay_order_status",
+      "storage": "db_required",
+      "pageId": "trades"
+    },
+    {
+      "kind": "dict_catalog",
+      "ref": "yn（Jeecg 内置是/否字典）",
+      "storage": "db_required",
+      "pageId": "trades"
+    }
+  ]
+}

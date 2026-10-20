@@ -1,9 +1,1 @@
-[
-  {
-    "spec": "docs/superpowers/specs/2026-08-16-fixture-ledger-design.md",
-    "approval": "auto_approved",
-    "risk": "low",
-    "decidedAt": "2026-08-16T13:30:00.000Z",
-    "note": "拟改动手写文件≤5；业务工程由 $apt-create 在本仓生成。未在源码仓跑 plan-from-spec，避免写错仓库。"
-  }
-]
+[]

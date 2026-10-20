@@ -1,0 +1,16 @@
+{
+  "pageId": "login",
+  "title": "登录页",
+  "capabilities": [
+    "list"
+  ],
+  "signals": [
+    {
+      "kind": "list",
+      "excerpt": "- `empty`：不适用（本页无列表数据）。",
+      "path": "designs/v0/login/page.logic.md"
+    }
+  ],
+  "sourcePath": "designs/v0/login/page.logic.md",
+  "contentHash": "5cd672b49cc0dc9b2ddf55d17a0deb5c6c0664167a2f1a9cbbb88dfaf926717d"
+}

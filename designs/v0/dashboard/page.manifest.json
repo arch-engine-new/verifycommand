@@ -1,0 +1,19 @@
+{
+    "pageId":  "dashboard",
+    "title":  "工作台",
+    "source":  "live-project",
+    "sourceFile":  "prototype/paycenter-admin/index.html",
+    "sourceAnchor":  "#page-dashboard",
+    "prd":  [
+                "paycenter/20-首筑操作后台设计.md",
+                "paycenter/01-支付产品需求文档-PRD.md"
+            ],
+    "route":  "/paycenter/dashboard",
+    "apiIntents":  [
+                       "getDashboardOverview",
+                       "getChannelHealth"
+                   ],
+    "status":  "approved",
+    "generatedAt":  "2026-10-19T23:32:42+08:00",
+    "approvedAt":  "2026-10-19T23:38:05+08:00"
+}

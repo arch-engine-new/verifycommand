@@ -1,0 +1,26 @@
+{
+    "pageId":  "agreements",
+    "title":  "协议留痕",
+    "source":  "live-project",
+    "sourceFile":  "prototype/paycenter-admin/index.html",
+    "sourceAnchor":  "#page-agreements",
+    "prd":  [
+                "paycenter/20-首筑操作后台设计.md",
+                "paycenter/14-用户协议与前端交互设计.md",
+                "paycenter/02-内部系统对接文档.md"
+            ],
+    "status":  "approved",
+    "route":  "/paycenter/agreements",
+    "roles":  [
+                  "admin",
+                  "operator"
+              ],
+    "apis":  [
+                 "listAgreementConsents",
+                 "dict:agreement_code",
+                 "dict:agreement_source"
+             ],
+    "generatedBy":  "manual",
+    "generatedAt":  "2026-10-19T23:45:00+08:00",
+    "approvedAt":  "2026-10-19T23:38:05+08:00"
+}

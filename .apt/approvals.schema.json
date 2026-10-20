@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APT approvals.json",
+  "description": "Each entry records an approval decision for one design spec. Written by orchestration-side agents (e.g. after brainstorming).",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["spec", "approval"],
+    "properties": {
+      "spec": { "type": "string", "description": "Project-relative path to the spec file, e.g. docs/superpowers/specs/2026-07-03-foo-design.md" },
+      "approval": { "type": "string", "enum": ["approved", "pending", "auto_approved"] }
+    }
+  }
+}

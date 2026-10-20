@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "agent-protocol-mcp": {
+      "type": "stdio",
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--max-old-space-size=8192",
+        "C:\\Users\\weilt\\.apt\\mcp-server\\dist\\index.js"
+      ],
+      "env": {
+        "APT_PROJECT_ROOT": "D:\\software\\dog-food"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "pageId": "dashboard",
+  "title": "工作台",
+  "capabilities": [
+    "list",
+    "payment"
+  ],
+  "signals": [
+    {
+      "kind": "payment",
+      "excerpt": "3. 渲染 4 张指标卡：今日支付成功（笔数 + 金额）、今日退款（笔数 + 金额）、待处理退款数、需人工核查数。",
+      "path": "designs/v0/dashboard/page.logic.md"
+    },
+    {
+      "kind": "list",
+      "excerpt": "5. 渲染「今日各商户收款 Top5」表格。",
+      "path": "designs/v0/dashboard/page.logic.md"
+    }
+  ],
+  "sourcePath": "designs/v0/dashboard/page.logic.md",
+  "contentHash": "0223d8614f84afaeed1f46130ca29d055480b6a0ac48d8b129dc6df471ae862d"
+}

@@ -1,0 +1,30 @@
+{
+    "pageId":  "trades",
+    "title":  "交易查询",
+    "source":  "live-project",
+    "sourceFile":  "prototype/paycenter-admin/index.html",
+    "sourceAnchor":  "#page-trades",
+    "relatedAnchors":  [
+                           "#tradeModal"
+                       ],
+    "route":  "/paycenter/trades",
+    "prd":  [
+                "paycenter/20-首筑操作后台设计.md",
+                "paycenter/01-支付产品需求文档-PRD.md"
+            ],
+    "prdSections":  [
+                        "20 §2 角色与权限",
+                        "20 §4 P4",
+                        "20 §5 A2/A6/A7",
+                        "20 §9.1 全局交互",
+                        "20 §9.4 P4 交易查询",
+                        "01 §7 状态机",
+                        "01 §8 数据模型"
+                    ],
+    "techStack":  "JeecgBoot",
+    "logicFile":  "designs/v0/trades/page.logic.md",
+    "reconcile":  "manual (reconcile_page_logic skipped: llmUploadConsent not set)",
+    "status":  "approved",
+    "generatedAt":  "2026-10-19T15:33:34Z",
+    "approvedAt":  "2026-10-19T23:38:05+08:00"
+}
