@@ -1,5 +1,5 @@
 # APT 批量台账（batch-mcp 渲染视图）
-> 共 7 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 8 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## L-1
 - batch：batch-1
@@ -49,3 +49,10 @@
 - 类型：attestation
 - 记录：2026-10-20T23:02:26.623Z
 - 数据：{"evidence":"同 2026-10-21 07:00 用户「授权派发」；主仓已提交 efca5d7、backend 嵌套仓已提交 fa310dc（分支 paycenter），工作区前置满足后重调。","kind":"dispatchFlip"}
+
+## L-8
+- batch：-
+- item：-
+- 类型：attestation
+- 记录：2026-10-20T23:02:49.248Z
+- 数据：{"evidence":"同 2026-10-21 07:00 用户「授权派发」；前两次翻转留痕已提交，工作区已洁后重调。","kind":"dispatchFlip"}
