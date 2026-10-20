@@ -1,5 +1,5 @@
 # APT 批量台账（batch-mcp 渲染视图）
-> 共 6 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 7 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## L-1
 - batch：batch-1
@@ -42,3 +42,10 @@
 - 类型：attestation
 - 记录：2026-10-20T23:00:18.039Z
 - 数据：{"evidence":"2026-10-21 07:00 用户在本会话回复「授权派发」，回应我列出的预授权清单：派发单个后台执行体按 F-1→F-5 串行执行；允许派发子 Agent、读写本仓库文件、执行终端命令（mvn、docker exec、git commit、pnpm、拉取 jeecgboot-vue3 前端仓库、启动本地应用）。平台=Cursor，支持后台子 Agent（Task run_in_background）。","kind":"dispatchFlip"}
+
+## L-7
+- batch：-
+- item：-
+- 类型：attestation
+- 记录：2026-10-20T23:02:26.623Z
+- 数据：{"evidence":"同 2026-10-21 07:00 用户「授权派发」；主仓已提交 efca5d7、backend 嵌套仓已提交 fa310dc（分支 paycenter），工作区前置满足后重调。","kind":"dispatchFlip"}
