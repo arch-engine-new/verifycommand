@@ -1,13 +1,13 @@
 # dog-food 长任务方案（paycenter 操作后台全程开发）
 
 > 2026-10-20 · 状态：**方案就绪，未开工**——双跑风险待解除（Cursor 侧会话是否已停，待用户确认）
-> 前置事实：7 页 ingest approved=yes；schema 评审通过（docs/schema/paycenter-schema.md，2026-10-20）；14 表 flyway migration 已生成（backend untracked V20261020_1）；Java 代码未动、前端 vue3 页面未动；start_init(full) 重建索引中（workspace+=backend）
+> 前置事实：7 页 ingest approved=yes；schema 评审通过（docs/schema/paycenter-schema.md，2026-10-20）；14 表 flyway migration 已生成（backend untracked V20261020_1）；Java 代码未动、前端 vue3 页面未动；索引时序修正（2026-10-20）：JeecgBoot 框架码不进索引（全量扫描 21min 不收敛且是噪音）；S0 落地 paycenter 模块后将该模块目录加入扫描（秒级），业务码才进 search_arch
 
 ## 切片队列设计（7 页 + 地基片，依赖序）
 
 | 序 | 切片 | 范围 | 依赖 | 验收面 |
 |---|---|---|---|---|
-| S0 | 地基片 | backend Java 基线：paycenter module 挂载 JeecgBoot（模块注册/包扫描/flyway 激活）、公共基础设施（雪花ID/金额分 TypeHandler/统一分页/操作日志切面） | init 索引 | mvn compile 过 + flyway 启动建表 14 张 |
+| S0 | 地基片 | backend Java 基线：paycenter module 挂载 JeecgBoot（模块注册/包扫描/flyway 激活）、公共基础设施（雪花ID/金额分 TypeHandler/统一分页/操作日志切面） | mvn compile 过 + flyway 建表 14 张 + paycenter 模块目录纳扫 | mvn compile 过 + flyway 启动建表 14 张 |
 | S1 | login | /login：单按钮登录（角色按账号）、图形验证码、5 次锁 15 分钟；复用 Jeecg sys_user | S0 | 片内测试 + verify |
 | S2 | merchants | 商户管理 CRUD + 3 支付方式开关 + 关联小区增删（pay_merchant/pay_merchant_project） | S0 | 片内测试 + verify |
 | S3 | trades | 交易查询列表/详情（items 子表 + 银联流水号 + 手续费 + 结算日；导出 CSV 二期不做） | S0, S2（商户数据） | 片内测试 + verify |
