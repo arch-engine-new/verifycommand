@@ -179,10 +179,17 @@
         },
         {
             "id": "F-9:PB-1",
-            "attempts": 0,
+            "attempts": 1,
             "action": "plan_from_spec",
+            "status": "done",
+            "notes": "docs/apt/plans/2026-10-22-paycenter-s4-reliability-plan.md（组A-D 17 Task）"
+        },
+        {
+            "id": "F-9:PB-2",
+            "attempts": 1,
+            "action": "implement_plan",
             "status": "in_progress",
-            "notes": "读取 S4 spec 中"
+            "notes": "组A（回调推送 R1-R4）派发中"
         }
     ]
 }
