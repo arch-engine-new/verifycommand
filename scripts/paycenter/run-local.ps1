@@ -56,7 +56,18 @@ function New-PcAppEnvFile {
         '# PayCenter local app secrets (generated, local only, gitignored). Do not commit.',
         ('PAY_MASTER_KEY=' + [Convert]::ToBase64String($bytes)),
         'PAY_MASTER_KEY_VERSION=1',
-        '# PAY_UNIONPAY_MSG_SRC_ID=<fill in 4-char source id>'
+        '# PAY_UNIONPAY_MSG_SRC_ID=<fill in 4-char source id>',
+        '# PAY_UNIONPAY_APP_ID=<fill>',
+        '# PAY_UNIONPAY_APP_KEY=<fill>',
+        '# PAY_UNIONPAY_COMM_KEY=<fill>',
+        '# PAY_UNIONPAY_BASE_URL=https://test-api-open.chinaums.com',
+        '# PAY_UNIONPAY_ENV=TEST',
+        '# PAY_UNIONPAY_MID=<fill>',
+        '# PAY_UNIONPAY_TID=<fill>',
+        '# PAY_UNIONPAY_SUB_APP_ID=<fill, PROD only>',
+        '# PAY_UNIONPAY_NOTIFY_URL=<public https url>',
+        '# PAY_UNIONPAY_NOTIFY_IP_WHITELIST=<comma separated ips>',
+        '# PAY_UNIONPAY_LIVE_PAID_ORDER_ID=<optional, paid mchntOrderId for refund live test>'
     )
     $dir = Split-Path -Parent $Path
     if (-not (Test-Path -LiteralPath $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
