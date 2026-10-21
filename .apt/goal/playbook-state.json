@@ -189,7 +189,7 @@
             "attempts": 1,
             "action": "implement_plan",
             "status": "in_progress",
-            "notes": "组A（回调推送 R1-R4）派发中"
+            "notes": "组A 61faa5c（回调推送/领取租约/X-Sign/退避/manualRetry/字典V20261022_1；最终报告信封丢失但提交完整、树干净）；组B派发中"
         }
     ]
 }
