@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "suspiciousOptionFiles": [
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_0.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_1.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_2.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_3.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_31.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/sysdatalog.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_0.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_1.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_2.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_3.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_31.json",
+    "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/sysdatalog.json"
+  ],
+  "warnings": [
+    {
+      "concernId": "iot_platform",
+      "question": "要不要引入开源 IoT 底座？",
+      "message": "高密度（2 页）但答案为「不要」：要不要引入开源 IoT 底座？",
+      "pageCount": 2,
+      "answer": "no"
+    },
+    {
+      "concernId": "dict_catalog",
+      "question": "选项/级联主数据是否统一字典服务并落库（禁止 JSON 文件终态）？",
+      "message": "可疑选项 JSON（backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_0.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_1.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_2.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_3.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/asyn_tree_list_31.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/src/main/java/org/jeecg/modules/demo/mock/json/sysdatalog.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_0.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_1.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_2.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_3.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/asyn_tree_list_31.json, backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo/target/classes/org/jeecg/modules/demo/mock/json/sysdatalog.json）已由 answers.note 声明 MOCK/过渡，请按计划迁移到 dict/API",
+      "pageCount": 4,
+      "answer": "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo 下的 mock/json/*.json（含 target/classes 拷贝）是 JeecgBoot 官方示例模块自带的演示数据，不属于支付中心字典选项，不受本决策约束。"
+    }
+  ],
+  "message": "PASS（2 条 WARN：含选项 JSON 过渡声明）"
+}

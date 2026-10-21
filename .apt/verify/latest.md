@@ -1,7 +1,7 @@
 # Verify Report
 
-**Plan:** docs/apt/plans/2026-10-20-paycenter-s1-foundation-plan.md
-**Slice:** F-1（S1 工程骨架与基础设施）— 第 2 轮（修复后复验）
+**Plan:** docs/apt/plans/2026-10-21-paycenter-s2-unionpay-channel-plan.md（+ verify-fix：docs/apt/plans/2026-10-21-verify-fix-paycenter-s2-quality-plan.md）
+**Slice:** F-2（S2 银联通道适配）— 第 3 轮（backend c75ed7d；第 3 轮仅重验产品对齐，其他维度沿用第 2 轮证据）
 **Overall:** PASS
 **Date:** 2026-10-21
 
@@ -22,40 +22,33 @@
 | 外部 Harness | SKIP |
 
 ## Harness
-SKIP：无外部 Harness 触发（goal.md 无 sourceDoc 可执行规格）。
+SKIP：无外部 Harness 触发（`unionpay-live` 真实联调留待 `/apt-accept`）。
 
 ## Plan Coverage
-| Task | 结果 | 备注 |
-|------|------|------|
-| T1 | PASS | install 0；dependency:tree 含 jeecg-module-paycenter（f1-g1-report） |
-| T2 | PASS | datasource 段无明文口令；`/v1/ping,/notify/unionpay/**` 1 行；`/v1/**` 0 行 |
-| T3 | PASS | `len=32 mk=32`，仅打印变量名；`.apt/local/` 已 gitignore |
-| T4–T7 | PASS | 14 实体；mapper 14 / service impl 14 |
-| T8 | PASS | PayEntityDdlConsistencyTest 1/1 |
-| T9 | PASS | PayMapperSmokeTest 15/15，UT- 残留 0 |
-| T10 | PASS | PayErrorCodeTest 3 + PayOpenApiExceptionHandlerTest 3 |
-| T11 | PASS | PayCryptoServiceTest 10 |
-| T12 | PASS | PayTraceFilterTest 4；logback `%X{traceId}` = 2 |
-| T13–T15 | PASS | PayRedisLockTest 4 / PayRateLimiterTest 3 / PayReplayGuardTest 5 |
-| T16 | PASS | PayNoGeneratorTest 7 |
-| T17–T18 | PASS | pc_dryrun 两次执行；dict 12 / item 46 / perm 15 / rp 26 / agreement 5；`#(` 0 |
-| T19 | PASS | PayPingControllerTest 1 |
-| T20 | PASS | 全量 56/56；E2E 6 项全过（f1-g6-report：flyway 3 行 success=1，ping 匿名 0000 + X-Trace-Id 回写，not-exist 401，日志 traceId，workerId=1） |
-| T21 | PASS | start-init 增量 exit 0；search_arch PayCryptoService / PayRedisLock 命中新模块 |
+- S2 plan T1–T17：第 1 轮已逐条 PASS；第 2 轮 verify-fix 仅改注释与 `Clock` 等价写法，复测全量用例覆盖各 Task Verify 行。
+- verify-fix T1：PASS（`rg "\.system\("` 清零；全量 193 用例绿；paycenter 范围 high=0 / medium=0）。
 
-## 维度明细
-- 架构 audit：`audit_arch_changes`(since last-scan) new/modified/deleted/unregistered 皆空。
-- 产品对齐：`.apt/arch-review/product-arch-answers.json` 已含 payment/dict_catalog/iot_platform/gis_platform 4 项答案；`query_project_status` 仍报 unanswered 为 APT 已知缺陷（不计 FAIL）。
-- logic 同步：`check-logic-sync.cjs --base 2473b94` PASS（226 文件，0 failure）。
-- 契约登记：本片无对外 TS 类型，N/A → PASS。
-- 测试/构建：`mvn -q -o -pl jeecg-boot-module/jeecg-module-paycenter test`（已注入 env）exit 0，11 个测试类 56 用例 0 失败 0 跳过（`.apt/verify/f1-mvn-test.log`）。
-- 代码质量：`check_code_quality` 全仓含 Jeecg 官方源码（283 high），按 paycenter 范围过滤：high 3 / medium 4。
+## 证据
+- 测试（第 2 轮）：`mvn -q -o -pl jeecg-boot-module/jeecg-module-paycenter test` EXIT=0，193 用例 0 失败（日志 `.apt/verify/f2-r2-mvn-test.log`；`UnionPayLiveTest` 默认排除）。
+- 架构 audit（第 2 轮）：since last-scan（f98ead7）new/modified/deleted/unregistered 皆空。
+- 代码质量（第 2 轮）：`check_code_quality` 经 `.apt/orchestration/quality-filter.cjs paycenter` 过滤，scoped=0。
+- logic 同步（第 2 轮）：`check-logic-sync.cjs --base 769d772` exit 0（232 文件 0 失败）。
+- 可检索性（第 2 轮）：`search_arch` PayChannel / UnionPayHttpClient / PayNotifyHandler 均命中。
+- 契约（第 2 轮）：本片无 TS 对外类型（Java 后端），PASS。
+- 产品对齐（第 3 轮）：`checkProductAlignment` result=PASS，message「PASS（2 条 WARN：含选项 JSON 过渡声明）」；staleFiles=[]、unansweredConcerns=[]；原始输出 `.apt/verify/f2-r3-product-alignment.json`。
+
+## 第 3 轮修复过程（仅产品对齐）
+1. `start_product_init`（增量）→ `designs/v0/_pages.md` 哈希入 `.ai/product/last-scan.json`，staleFiles 清零（未改 `designs/`）。
+2. 暴露 unansweredConcerns=4：`.apt/arch-review/product-arch-answers.json` 为 `{ "answers": [...] }` 包装对象，arch-engine `readProductArchAnswers` 只接受顶层数组（探测 `.apt/verify/f2-r3-answers-schema-probe.json`）。用户同意后改为顶层数组（4 项内容不变）→ 全部识别（`.apt/verify/f2-r3-answers-debug.json`）。
+3. 暴露 suspiciousOptionFiles=12：均为 JeecgBoot 官方示例模块 `jeecg-module-demo` 的 `mock/json/*.json`（含 `target/classes` 拷贝），非 paycenter。用户选择方案 1：在 dict_catalog 项加 `note` 声明其为框架示例数据 → 检查器识别为过渡声明，降为 WARN。
+4. 最终重验 PASS。
+
+## Warnings
+- [WARN] iot_platform：高密度（2 页）但答案为「不要」（answers 注明为关键词误判 amount/mount）。
+- [WARN] dict_catalog：可疑选项 JSON 12 个（jeecg-module-demo mock 数据），已由 answers.note 声明为框架示例。
 
 ## Failures
-- 无。第 1 轮 [F1] 代码质量（paycenter high=3/medium=4）经 `docs/apt/plans/2026-10-21-verify-fix-paycenter-s1-quality-plan.md` 修复（backend 7792ac9）；复验 paycenter 范围 high=0/medium=0；全量测试 56/56 复跑通过。
-
-## Notes
-- 架构 audit 四类皆空，但 audit 仅对主仓 git diff，看不到嵌套 backend 仓库内的改动（APT gap），finish-feature 对 verify-fix 改动文件手动 refresh_asset。
+无。
 
 ## Recommended next steps
-- Overall PASS → `/finish-feature`（闭环：audit / refresh / 契约）
+- `/finish-feature`（闭环：audit / refresh / 契约）→ `batch_complete_slice` 标 F-2 done。

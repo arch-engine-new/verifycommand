@@ -1,29 +1,28 @@
-{
-  "answers": [
-    {
-      "concernId": "payment",
-      "answer": "yes-self-built",
-      "detail": "自建统一支付中心：pay-channel 渠道抽象 + 开关；一期仅银联商务一个真实通道，不引入第三方聚合支付底座。不做 Mock 通道：开发联调直接接银联测试环境（用户提供测试商户号，凭据走本地配置不进对话），异常类验收用例人工测试。",
-      "mock": "none",
-      "decidedAt": "2026-10-19T23:45:00+08:00"
-    },
-    {
-      "concernId": "dict_catalog",
-      "answer": "yes-jeecg-dict",
-      "detail": "统一使用 JeecgBoot 数据字典（sys_dict / sys_dict_item 落库），禁止 JSON 文件终态。字典：pay_method、pay_order_status、refund_order_status、card_attr、bill_type、fee_bearer、agreement_code、agreement_source、pay_admin_log_action、yn。",
-      "decidedAt": "2026-10-19T23:45:00+08:00"
-    },
-    {
-      "concernId": "iot_platform",
-      "answer": "no",
-      "detail": "无物联网场景（触发为关键词误判：amount/mount）。",
-      "decidedAt": "2026-10-19T23:45:00+08:00"
-    },
-    {
-      "concernId": "gis_platform",
-      "answer": "no",
-      "detail": "无地图场景（触发为关键词误判）。",
-      "decidedAt": "2026-10-19T23:45:00+08:00"
-    }
-  ]
-}
+[
+  {
+    "concernId": "payment",
+    "answer": "yes-self-built",
+    "detail": "自建统一支付中心：pay-channel 渠道抽象 + 开关；一期仅银联商务一个真实通道，不引入第三方聚合支付底座。不做 Mock 通道：开发联调直接接银联测试环境（用户提供测试商户号，凭据走本地配置不进对话），异常类验收用例人工测试。",
+    "mock": "none",
+    "decidedAt": "2026-10-19T23:45:00+08:00"
+  },
+  {
+    "concernId": "dict_catalog",
+    "answer": "yes-jeecg-dict",
+    "detail": "统一使用 JeecgBoot 数据字典（sys_dict / sys_dict_item 落库），禁止 JSON 文件终态。字典：pay_method、pay_order_status、refund_order_status、card_attr、bill_type、fee_bearer、agreement_code、agreement_source、pay_admin_log_action、yn。",
+    "note": "backend/jeecg-boot/jeecg-boot-module/jeecg-module-demo 下的 mock/json/*.json（含 target/classes 拷贝）是 JeecgBoot 官方示例模块自带的演示数据，不属于支付中心字典选项，不受本决策约束。",
+    "decidedAt": "2026-10-19T23:45:00+08:00"
+  },
+  {
+    "concernId": "iot_platform",
+    "answer": "no",
+    "detail": "无物联网场景（触发为关键词误判：amount/mount）。",
+    "decidedAt": "2026-10-19T23:45:00+08:00"
+  },
+  {
+    "concernId": "gis_platform",
+    "answer": "no",
+    "detail": "无地图场景（触发为关键词误判）。",
+    "decidedAt": "2026-10-19T23:45:00+08:00"
+  }
+]

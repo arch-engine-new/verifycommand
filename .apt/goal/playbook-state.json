@@ -9,6 +9,13 @@
                        "status":  "done",
                        "verifyResult":  "PASS",
                        "finishedAt":  "2026-10-21T00:50:00Z"
+                   },
+                   {
+                       "id":  "F-2",
+                       "description":  "适配 the 银联商务通道 for 支付中心",
+                       "status":  "done",
+                       "verifyResult":  "PASS",
+                       "finishedAt":  "2026-10-21T06:40:00Z"
                    }
                ],
     "cursor":  1,
@@ -49,6 +56,34 @@
                       "status":  "done",
                       "attempts":  1,
                       "notes":  "动态追加：apt-plan-from-verify(docs/apt/plans/2026-10-21-verify-fix-paycenter-s1-quality-plan.md) → implement → verify PASS"
+                  },
+                  {
+                      "id":  "F-2:PB-1",
+                      "action":  "plan_from_spec",
+                      "status":  "done",
+                      "attempts":  1,
+                      "notes":  "docs/apt/plans/2026-10-21-paycenter-s2-unionpay-channel-plan.md"
+                  },
+                  {
+                      "id":  "F-2:PB-2",
+                      "action":  "implement_plan",
+                      "status":  "done",
+                      "attempts":  1,
+                      "notes":  "15 Task 实现并提交 backend（paycenter 分支，最新 c75ed7d）；全量 193 测试绿"
+                  },
+                  {
+                      "id":  "F-2:PB-3",
+                      "action":  "verify",
+                      "status":  "done",
+                      "attempts":  3,
+                      "notes":  "第 1 轮 FAIL（代码质量）→ verify-fix（docs/apt/plans/2026-10-21-verify-fix-paycenter-s2-quality-plan.md）→ 第 2 轮仅产品对齐 FAIL（_pages.md stale）→ 第 3 轮：product-init 增量 + answers 改顶层数组 + dict_catalog.note 声明 jeecg-module-demo mock JSON → PASS；报告 .apt/verify/latest.md"
+                  },
+                  {
+                      "id":  "F-2:PB-4",
+                      "action":  "finish_feature",
+                      "status":  "done",
+                      "attempts":  1,
+                      "notes":  "audit 四类空（无架构资产变更）；sync-changes refreshed/removed 0、errors 0；javaCoverage SKIPPED（嵌套 backend 仓不在主仓 git diff 内，以 audit unregistered=0 佐证）；OpenAPI 无规格变更 SKIP；logicSync 未触及页面层 SKIP（第 2 轮 check-logic-sync exit 0）；kb-debt 0；无 TS 契约"
                   }
               ]
 }

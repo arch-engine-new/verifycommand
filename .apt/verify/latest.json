@@ -1,1 +1,18 @@
-{ "overall": "PASS", "date": "2026-10-21", "slice": "F-1", "round": 2, "harness": { "ran": false, "result": "SKIP" } }
+{
+  "overall": "PASS",
+  "date": "2026-10-21",
+  "round": 3,
+  "slice": "F-2",
+  "backendCommit": "c75ed7d",
+  "note": "第 3 轮仅重验产品对齐，其他维度沿用第 2 轮证据",
+  "failures": [],
+  "warnings": [
+    { "concernId": "iot_platform", "message": "高密度（2 页）但答案为「不要」" },
+    { "concernId": "dict_catalog", "message": "jeecg-module-demo mock JSON 12 个，已由 answers.note 声明为框架示例" }
+  ],
+  "evidence": [
+    ".apt/verify/f2-r2-mvn-test.log",
+    ".apt/verify/f2-r3-product-alignment.json"
+  ],
+  "harness": { "ran": false, "result": "SKIP" }
+}
