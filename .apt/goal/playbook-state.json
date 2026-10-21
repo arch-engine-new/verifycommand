@@ -153,7 +153,7 @@
             "attempts": 1,
             "action": "implement_plan",
             "status": "in_progress",
-            "notes": "组A 39f567c(259绿)+组B 0990c65(304绿,状态机/7步/R14/流水任务同事务,closeOrder契约3002已修)；组C派发中"
+            "notes": "组A 39f567c+组B 0990c65+组C 451c5b5(349绿,退款confirmResult唯一入口+PayNotifyHandler落地)；组D派发中"
         }
     ]
 }
