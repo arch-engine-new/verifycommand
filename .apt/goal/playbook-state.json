@@ -153,7 +153,7 @@
             "attempts": 1,
             "action": "implement_plan",
             "status": "in_progress",
-            "notes": "组A 39f567c（259绿；ATTR_APP 含 subjectId、错误码真名 TOKEN_INVALID/AUTH_FAILED、getByAppId/getByMerchantCode 备好）；组B 派发中"
+            "notes": "组A 39f567c(259绿)+组B 0990c65(304绿,状态机/7步/R14/流水任务同事务,closeOrder契约3002已修)；组C派发中"
         }
     ]
 }
