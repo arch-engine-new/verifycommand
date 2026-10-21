@@ -28,11 +28,19 @@
         {
             "id": "F-8",
             "description": "实现 the 交易核心与10个对内接口 for 支付中心（S3，含S2.5主体模型R14）",
+            "status": "done",
+            "startedAt": "2026-10-21T14:05:00Z",
+            "verifyResult": "PASS",
+            "finishedAt": "2026-10-22T02:05:00Z"
+        },
+        {
+            "id": "F-9",
+            "description": "实现 the 可靠性闭环 for 支付中心（S4）",
             "status": "running",
-            "startedAt": "2026-10-21T14:05:00Z"
+            "startedAt": "2026-10-22T02:06:00Z"
         }
     ],
-    "cursor": 2,
+    "cursor": 3,
     "steps": [
         {
             "id": "F-1:PB-1",
@@ -159,8 +167,22 @@
             "id": "F-8:PB-3",
             "attempts": 1,
             "action": "verify",
+            "status": "done",
+            "notes": ".apt/verify/latest.md Overall PASS 2026-10-22（质量scoped 0/logic-sync PASS/383绿/E2E过/用例A17/17）"
+        },
+        {
+            "id": "F-8:PB-4",
+            "attempts": 1,
+            "action": "finish_feature",
+            "status": "done",
+            "notes": "audit 四类空（无新表；Java 增量面缺陷#7注记）；无 TS 契约（HTTP 契约以02+test-cases 为真源）；batch_complete_slice(F-8,done) 已回传"
+        },
+        {
+            "id": "F-9:PB-1",
+            "attempts": 0,
+            "action": "plan_from_spec",
             "status": "in_progress",
-            "notes": "进行中：质量后台扫描+logic-sync+audit（四类空，缺陷#7注记）"
+            "notes": "读取 S4 spec 中"
         }
     ]
 }

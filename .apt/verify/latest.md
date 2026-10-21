@@ -1,23 +1,23 @@
 # Verify Report
 
-**Plan:** docs/apt/plans/2026-10-21-paycenter-s25-multi-subject-plan.md
+**Plan:** docs/apt/plans/2026-10-21-paycenter-s3-trade-core-plan.md
 **Overall:** PASS
-**Date:** 2026-10-21
+**Date:** 2026-10-22
 
 ## Summary
 | 维度 | 结果 |
 |------|------|
 | Plan 对照 | PASS |
-| 架构 audit | PASS（四类空；缺陷 #7 佐证记录） |
+| 架构 audit | PASS（四类空；缺陷 #7 注记：S3 无新表，实体图 SQL 源无变化；新 Java 面未入索引） |
 | 设计 audit | SKIP（本片无 UI 面） |
-| 产品对齐 | PASS（产品源自 F-2 PASS 后未变更、last-scan 已刷新衔接） |
-| logic 同步 | PASS |
-| Connect 门禁 | SKIP（无接线账本；F-5 未开工） |
-| 契约登记 | PASS（无 TS 契约；新 Java 服务面待 F-3 寻址时经 sync 补图） |
-| 可检索性 | PASS（既有依赖 4 项命中；新服务面不在图中已记 APT gap）； |
+| 产品对齐 | PASS（designs/v0 自 F-2 PASS 后未变更；last-scan 已衔接） |
+| logic 同步 | PASS（229 文件 0 失败，base=849a75b） |
+| Connect 门禁 | SKIP（无接线账本） |
+| 契约登记 | PASS（无 TS 契约；PayOpenApiV1 HTTP 契约以 02 文档+本 plan 为真源，前端接线时经 F-10 connect 消费） |
+| 可检索性 | PASS（3/4 关键依赖命中；PayMerchantSubject 未入索引=缺陷 #7 注记，表级经 entities.json source=sql 在图） |
 | 代码质量 | PASS（scoped paycenter：0 issues） |
 | 测试/构建 | PASS |
-| 测试用例覆盖率 | SKIP（无 test-cases.md） |
+| 测试用例覆盖率 | PASS（test-cases paycenter-s3.md：A 类 P0 17/17 全覆盖；C-01/02 覆盖；C-03 fee 数据源二期、C-04/05 归 S4=spec 非目标，GAP 如实标注不虚标） |
 | 外部 Harness | SKIP（无触发） |
 
 ## Harness
@@ -26,27 +26,23 @@ SKIP：无外部 Harness 触发。
 ## Plan Coverage
 | Task | PASS/SKIP | 备注 |
 |------|-----------|------|
-| T1 新建 PaySubject/PayMerchantSubject + mapper/service | PASS | backend 0947833；extends JeecgEntity；@TableLogic |
-| T2 修订 6 实体字段 | PASS | PayMerchant −3、PayMerchantProject −2、PayApp/PayOrder/PayRefundOrder +subjectId；PayChannelConfig 7 列由组 B 收口删除 |
-| T3 consistency test 扩展 16 表 | PASS | 双文件链真源（V20261020_1 + V20261021_1）；豁免已移除 |
-| T4 组 A commit | PASS | 0947833 |
-| T5 PaySubjectChannelConfigService + 环境级精简 + bootstrap 默认主体 | PASS | backend fd5cac2；双事件失效机制 |
-| T6 Channel*Request +subjectId 贯通 | PASS | 报文语义逐字未动 |
-| T7 通知验签主体定位 | PASS | 快照→msg_src_id 回退→失败；UnionPayNotifySubjectResolver |
-| T8 PayNoGenerator 按主体前缀 | PASS | 新重载保留旧路径回归 |
-| T9 组 B 测试 | PASS | 215 例全绿（含真实容器映射解析） |
-| T10 全量测试 | PASS | mvn -q -o test：Tests run: 215, Failures: 0, Errors: 0 |
-| T11 启动 E2E | PASS | 新 jar 重启；flyway_schema_history 20261021.1 success=1；/v1/ping 200；16 表结构核对全绿 |
-| T12 文档/账本 sync + 主仓提交 | 待主流程收口 | 本报告后执行 |
+| T1–T4 组A 鉴权/token/防重放/防漏网 | PASS | backend 39f567c；259 绿；覆盖测试枚举全 /v1 handler |
+| T5 状态机+唯一写入口 | PASS | 0990c65；全迁移表测试；条件更新 |
+| T6 下单七步+R14 主体解析 | PASS | 七步每码用例；双主体不同 sub_mchnt_no/缺映射 2001/无主体 2001；通道失败 5001+CLOSED(CHANNEL_FAIL) |
+| T7 查单/关单 | PASS | >10s 同步收敛；§3.8 CLOSED→3002 契约偏差已修 |
+| T8 流水+回调任务同事务 | PASS | 16 线程并发仅 1 生效；回滚皆无 |
+| T9 退款 | PASS | 451c5b5；全额/PAID/360 天/幂等/占位/三态映射/confirmResult 唯一入口 |
+| T10 通知处理 | PASS | @Order 最高优先接管；金额不符 ERROR 不改状态；重复 PROCESSED；TRADE_REFUND 触发补查；双主体不串号 |
+| T11 pay-methods/trades/agreements | PASS | 3612712；主体判定口径出处完备；summary/list 同 SQL 源一致性 |
+| T12 用例清单+E2E | PASS | 383/383 全绿；ping 0000、无 token 1003、错 secret 1002、新端点 1003；应用保持运行（pid 17140） |
 
 ## Failures
 - 无
 
-## 备注与佐证
-- 审计/架构闭环按 F-2 先例：`audit_arch_changes` 四类空；引擎锚定主仓 git 看不到嵌套 backend 变更（缺陷 #7 已记录）；EntityGraph 已收两新表（pay_subject entities.json L18235 / pay_merchant_subject L18376，source=sql）。
-- 质量门禁方法：`check_code_quality`（projectRoot）→ `.apt/orchestration/quality-filter.cjs <输出> paycenter` → scoped paycenter = 0 issues（同 F-2 verify line 的既定方法）。
-- env bootstrap：本地 paycenter-app.env 无 PAY_UNIONPAY_* 凭证（用户未提供参数），bootstrap 按设计跳过且 pay_subject 0 行；主体凭证数据测试经单测与容器真实 MySQL 用例覆盖。
-- 错误码零新增：缺映射复用 `MERCHANT_DISABLED(2001)` + detail「商户未开通当前支付主体」。
+## 备注
+- next_query_time/query_round 未置位=spec 非目标，归 S4（F-9）；写入口 @Transactional 就绪。
+- pay-methods 路径变量端点入站限流口径：无商户上下文不限流（拦截器）+服务层越权复查；如需商户桶覆盖，S4/后续决策（组 D 风险注记 3）。
+- 契约命名偏差（page_no/page_size、status 批量形态）依 02 尾注走研发 OpenAPI 真源，已入 DTO Javadoc 与用例清单备注。
 
 ## Recommended next steps
-- Overall PASS → `/finish-feature`（闭环）→ `batch_complete_slice(F-6, done)` → 泊车解除（S3/S4/S5 重入队）
+- Overall PASS → `/finish-feature`（闭环注记）→ `batch_complete_slice(F-8, done)` → 片间自取 F-9（S4 可靠性闭环）
