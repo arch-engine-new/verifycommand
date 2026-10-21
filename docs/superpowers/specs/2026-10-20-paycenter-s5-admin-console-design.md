@@ -31,7 +31,7 @@ redteam: user-confirmed-2026-10-20
 |---------|----------|----------|
 | login (H1) | 复用 Jeecg 登录（验证码、失败锁定按 page.logic.md：5 次锁定 15 分钟，若 Jeecg 默认策略不符则通过配置/扩展实现） | 复用 Jeecg 登录页，品牌文案按 page.logic.md |
 | dashboard (H2) | `GET /paycenter/admin/dashboard/overview`：今日成功笔数/金额、今日退款、待处理退款（REFUNDING）、需人工核查（manual_check=1）、通道健康（近 15 分钟银联调用成功率/最近错误，来自 S2 指标或通知/调用日志统计）、回调 FAILED 数 | 卡片 + 列表跳转 |
-| merchants (H3) | 列表/详情/新增/编辑/启停；支付方式三开关；单笔限额；回调地址与 notify_domain；微信 subAppId（为空强制关微信）；小区关联增删（`pay_merchant_project` 物理删除）；merchant_code 创建后不可改 | 运营只读；表单校验按 page.logic.md |
+| merchants (H3) | 列表/详情/新增/编辑/启停；支付方式三开关；单笔限额；回调地址与 notify_domain；小区关联增删（`pay_merchant_project` 物理删除）；merchant_code 创建后不可改；**商户弹窗内子商户号映射配置**（按主体（×小区）维护 `pay_merchant_subject.sub_mchnt_no/sub_term_no`，S2.5 新增） | 运营只读；表单校验按 page.logic.md |
 | trades (H4) | 支付单分页查询（单号/商户/日期/状态/支付方式/manual_check）、详情（含 items、txn_flow、refund 列表、channel_seq、card_attr、fee）、主动查单（调 S3 查询收敛）、标记已核查（manual_check→0，写日志）、导出（若 page.logic.md 标注二期则只保留按钮占位隐藏） | 详情弹窗 |
 | refunds (H5) | 退款单分页查询；发起退款（调 S3 `RefundService`，source=ADMIN，全额、360 天、二次确认）；失败/UNKNOWN 重试；回显原单 | 发起弹窗含回显原单 |
 | agreements (H6) | 协议留痕查询：按用户 ID/协议编码/版本/时间查 `pay_agreement_consent` + 事件流水；协议版本列表（`pay_agreement_version`，admin 可改 content_url/新增版本 → AGREEMENT_CONFIG 日志） | 运营只读 |
@@ -55,6 +55,9 @@ redteam: user-confirmed-2026-10-20
 | R8 | logs 查询 | 08 H7 | 按动作/时间筛选正确 | must |
 | R9 | 回调 FAILED 人工重推 | S4 R3 | 页面可见 FAILED 任务并重推成功后状态变 PENDING | must |
 | R10 | 敏感数据脱敏 | arch-review desensitize | 接口响应不含 `*_enc`；商户号仅末 4 位；手机号脱敏 | must |
+| R14 | S2.5 多支付主体后台管理：新增「支付主体」页（pay_subject 列表/新增/启停，scene 字典 pay_scene，凭证只显示是否已配置、可重置不回显）+ 商户弹窗子商户号映射配置；新增菜单与按钮权限 | S2.5 收敛确认（order=before_s3） | 主体 CRUD 各接口测试；`main_mchnt_no`/`sub_mchnt_no` 仅末 4 位；凭证编辑只写不读；操作写 pay_admin_log（SUBJECT_* 动作字典增量） | must |
+
+> 注：本切片（S2.5）执行时新增页 `pay_subject`/映射弹窗将使 designs/v0 页面清单变更——属 armed 项目 PM 变更，届时须先经 `$apt-create --refine` 产出 page.logic 增量再做 frontend 实现（F-5 解泊车后的前置步骤）。
 | R11 | 7 页按 page.logic.md 实现并通过 frontend-connect 门禁 | `_pages.md` | 每页 `test-cases.md`（B1.5）生成且关键用例有自动化（后端接口测试 + 前端组件/E2E 冒烟）；`/apt-frontend-connect` 门禁 PASS | must |
 
 ## 5. 开放项

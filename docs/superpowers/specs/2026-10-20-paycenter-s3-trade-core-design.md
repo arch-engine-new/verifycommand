@@ -76,7 +76,10 @@ redteam: user-confirmed-2026-10-20
 | R11 | 交易流水与回调任务同事务写入 | 08 C3、02 §3.6 | confirmPaid 后 txn_flow 1 条、callback_task PENDING 1 条；事务回滚时两者都不存在 | must |
 | R12 | 通知处理（定位、金额校验、幂等、退款补查） | 04 §7 | 金额不符→ERROR 不改状态；重复通知→PROCESSED；TRADE_REFUND→触发 refund-query | must |
 | R13 | 22 文档 A/C 类 P0 用例自动化 | 08 §三 | 用例清单 `docs/apt/test-cases/paycenter-s3.md` 与 22 文档 A/C P0 逐条对应，全部自动化通过（通道用 MockWebServer） | must |
+| R14 | S2.5 多支付主体：下单解析 app→subject→pay_merchant_subject（小区优先，缺省回落商户默认），订单落 subject_id 快照 | S2.5 收敛确认（用户 2026-10-20 order=before_s3） | app 按 `pay_app.subject_id` 绑定主体；下单按项目精确命中→商户默认（''）解析 sub_mchnt_no/sub_term_no；同一物业公司在两个主体下解析出不同子商户号；未绑定主体或未配置映射 → 复用错误码 2001（配置类缺失，响应文案带「商户未开通当前支付主体」上下文，不在 02 §1.3 外新增对内码）；`pay_order`/`pay_refund_order` 落 `subject_id` | must |
 
-## 5. 字段落点（已核对 schema）
-- 商户：`pay_merchant.notify_domain`（回调域名白名单）、`max_amount`（单笔限额，分）、`pay_methods_enabled`、`wx_sub_appid`（为空时 WECHAT 强制不可用）、`status`。
-- 小区独立商户号：`pay_merchant_project.unionpay_mchnt_no/unionpay_term_no` 为空则用商户主商户号/终端号（下单时按 `project_id` 解析）。
+## 5. 字段落点（已按 S2.5 主体模型修订）
+- 主体（凭证与主商户号）：`pay_subject.main_mchnt_no/main_term_no`、`app_id`、`app_key_enc/comm_key_enc`（AES-256-GCM）、`msg_src/msg_src_id`（单号来源编号前缀）、`notify_sign_type`、`key_version`、`wx_sub_appid`（公众号/小程序场景）、`scene`（字典 pay_scene）、`status`。
+- 子商户号解析：`pay_merchant_subject`（uk: merchant_id+subject_id+project_id），`project_id=''` 为商户默认，小区精确命中优先；主体由 `pay_app.subject_id` 决定（下单接口不加 subjectCode 入参）。
+- 商户：`pay_merchant.notify_domain`（回调域名白名单）、`max_amount`（单笔限额，分）、`pay_methods_enabled`、`status`；银商字段已迁主体（S2.5 下线 `unionpay_mchnt_no/unionpay_term_no/wx_sub_appid`）。
+- 订单快照：`pay_order`/`pay_refund_order.subject_id`；`pay_order.unionpay_mchnt_no/unionpay_term_no` 保留为"下单时解析结果"快照（值来自主体映射 sub_*）。

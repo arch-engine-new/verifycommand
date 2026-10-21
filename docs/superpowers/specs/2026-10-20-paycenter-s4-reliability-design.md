@@ -72,6 +72,7 @@ redteam: user-confirmed-2026-10-20
 | R10 | 悬挂检测摘要告警 | 08 §三.4 | 构造 1 条超时 WAIT_PAY → 摘要告警包含其单号 | must |
 | R11 | 钉钉告警：加签、去重、限流、脱敏、失败不阻断 | 用户选择钉钉 | `PayDingTalkAlertTest`（MockWebServer）：签名参数正确；10 分钟内同键只发 1 次；超 20 条合并；内容不含 secret/完整商户号；webhook 500 时主流程不受影响 | must |
 | R12 | 任务开关、批量上限、traceId 透传 | arch-review tracing | 关闭开关后任务不执行；单轮处理 ≤ 上限；任务日志带 traceId | must |
+| R13 | S2.5 主体快照一致性：查单/关单/回调推送全程按 `pay_order`/`pay_refund_order` 的 `subject_id` 快照取主体凭证与网关环境 | S2.5 收敛确认（order=before_s3） | Mock 测试：两主体各一单，查单/关单请求分别路由到各自主体的配置与凭证；快照缺失（理论上不可能，subject_id NOT NULL）→ 告警并走 9999 兜底 | must |
 
 ## 5. 开放项
 - `pay_admin_log_action` 需新增 `CALLBACK_RETRY`（回调重推），在本切片以 Flyway 增量脚本追加字典项。

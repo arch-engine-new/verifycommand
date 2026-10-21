@@ -1,5 +1,26 @@
 # Schema Progress
 
+- feature: paycenter-s2.5-multi-subject
+- status: ready-for-review
+- schemaPath: docs/schema/paycenter-s25-multi-subject-schema.md
+- reviewed: yes
+- applied: yes
+- appliedAt: 2026-10-21T20:05:00+08:00
+- confirmedBy: 用户原话「批准」（2026-10-21 会话，触发闸门 = 用户确认 + --apply + ready-for-review）
+- round: F-6（S2.5 多支付主体，2026-10-21）
+- applied-gate: 2026-10-21 check-schema-apply PASS（stack=sql-fallback）；Flyway V20261021_1 success=1（flyway_schema_history）；16 表结构核对通过（pay_subject 22 列、下线列 0 残留、subject_id 三表就位、pay_scene 字典 4 项）
+- stack: sql-fallback（DDL 已由 Flyway 落库；MyBatis-Plus 实体类在 implement 计划 T1/T2 生成，见 docs/apt/plans/2026-10-21-paycenter-s25-multi-subject-plan.md）
+- migration: backend/jeecg-boot/jeecg-module-system/jeecg-system-start/src/main/resources/flyway/sql/mysql/V20261021_1__paycenter_s25_subject.sql
+- entitygraph: 落实体后经 register/refresh/sync-changes 入图（S1 14 表已入图，S2.5 +2 表）
+- design-basis: 用户 2026-10-20 收敛确认（inbox I-1→F-6）：cred=per_subject、route=by_app、sub=mapping、scene=APP/WECHAT_MP/MINI_PROGRAM/H5、order=before_s3
+- inputs: docs/schema/paycenter-schema.md（S1 基线，14 表已 applied）+ V20261020_1 DDL + 用户确认稿
+- gap-resolutions: 主体 Credential 迁移来源 pay_channel_config（用户已确认）；子商户映射 uc 含 project_id（用户已确认）；project_id 哨兵 ''（MySQL uk 空值缺陷，待评审要点 1）；pay_channel_config uk→(channel_code,env)（降级环境级，待评审要点 2）；下单不加 subjectCode 入参（用户已确认）
+- gate: 2026-10-21 check-schema-design：PASS；待用户原话门禁「评审通过，执行 apply」或「表设计完成」
+
+---
+
+# Schema Progress（历史归档：S1 round）
+
 - feature: paycenter
 - status: applied
 - schemaPath: docs/schema/paycenter-schema.md

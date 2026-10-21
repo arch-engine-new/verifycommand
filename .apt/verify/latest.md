@@ -1,7 +1,6 @@
 # Verify Report
 
-**Plan:** docs/apt/plans/2026-10-21-paycenter-s2-unionpay-channel-plan.md（+ verify-fix：docs/apt/plans/2026-10-21-verify-fix-paycenter-s2-quality-plan.md）
-**Slice:** F-2（S2 银联通道适配）— 第 3 轮（backend c75ed7d；第 3 轮仅重验产品对齐，其他维度沿用第 2 轮证据）
+**Plan:** docs/apt/plans/2026-10-21-paycenter-s25-multi-subject-plan.md
 **Overall:** PASS
 **Date:** 2026-10-21
 
@@ -9,46 +8,45 @@
 | 维度 | 结果 |
 |------|------|
 | Plan 对照 | PASS |
-| 架构 audit | PASS |
-| 设计 audit | SKIP |
-| 产品对齐 | PASS |
+| 架构 audit | PASS（四类空；缺陷 #7 佐证记录） |
+| 设计 audit | SKIP（本片无 UI 面） |
+| 产品对齐 | PASS（产品源自 F-2 PASS 后未变更、last-scan 已刷新衔接） |
 | logic 同步 | PASS |
-| Connect 门禁 | SKIP |
-| 契约登记 | PASS |
-| 可检索性 | PASS |
-| 代码质量 | PASS |
+| Connect 门禁 | SKIP（无接线账本；F-5 未开工） |
+| 契约登记 | PASS（无 TS 契约；新 Java 服务面待 F-3 寻址时经 sync 补图） |
+| 可检索性 | PASS（既有依赖 4 项命中；新服务面不在图中已记 APT gap）； |
+| 代码质量 | PASS（scoped paycenter：0 issues） |
 | 测试/构建 | PASS |
-| 测试用例覆盖率 | SKIP |
-| 外部 Harness | SKIP |
+| 测试用例覆盖率 | SKIP（无 test-cases.md） |
+| 外部 Harness | SKIP（无触发） |
 
 ## Harness
-SKIP：无外部 Harness 触发（`unionpay-live` 真实联调留待 `/apt-accept`）。
+SKIP：无外部 Harness 触发。
 
 ## Plan Coverage
-- S2 plan T1–T17：第 1 轮已逐条 PASS；第 2 轮 verify-fix 仅改注释与 `Clock` 等价写法，复测全量用例覆盖各 Task Verify 行。
-- verify-fix T1：PASS（`rg "\.system\("` 清零；全量 193 用例绿；paycenter 范围 high=0 / medium=0）。
-
-## 证据
-- 测试（第 2 轮）：`mvn -q -o -pl jeecg-boot-module/jeecg-module-paycenter test` EXIT=0，193 用例 0 失败（日志 `.apt/verify/f2-r2-mvn-test.log`；`UnionPayLiveTest` 默认排除）。
-- 架构 audit（第 2 轮）：since last-scan（f98ead7）new/modified/deleted/unregistered 皆空。
-- 代码质量（第 2 轮）：`check_code_quality` 经 `.apt/orchestration/quality-filter.cjs paycenter` 过滤，scoped=0。
-- logic 同步（第 2 轮）：`check-logic-sync.cjs --base 769d772` exit 0（232 文件 0 失败）。
-- 可检索性（第 2 轮）：`search_arch` PayChannel / UnionPayHttpClient / PayNotifyHandler 均命中。
-- 契约（第 2 轮）：本片无 TS 对外类型（Java 后端），PASS。
-- 产品对齐（第 3 轮）：`checkProductAlignment` result=PASS，message「PASS（2 条 WARN：含选项 JSON 过渡声明）」；staleFiles=[]、unansweredConcerns=[]；原始输出 `.apt/verify/f2-r3-product-alignment.json`。
-
-## 第 3 轮修复过程（仅产品对齐）
-1. `start_product_init`（增量）→ `designs/v0/_pages.md` 哈希入 `.ai/product/last-scan.json`，staleFiles 清零（未改 `designs/`）。
-2. 暴露 unansweredConcerns=4：`.apt/arch-review/product-arch-answers.json` 为 `{ "answers": [...] }` 包装对象，arch-engine `readProductArchAnswers` 只接受顶层数组（探测 `.apt/verify/f2-r3-answers-schema-probe.json`）。用户同意后改为顶层数组（4 项内容不变）→ 全部识别（`.apt/verify/f2-r3-answers-debug.json`）。
-3. 暴露 suspiciousOptionFiles=12：均为 JeecgBoot 官方示例模块 `jeecg-module-demo` 的 `mock/json/*.json`（含 `target/classes` 拷贝），非 paycenter。用户选择方案 1：在 dict_catalog 项加 `note` 声明其为框架示例数据 → 检查器识别为过渡声明，降为 WARN。
-4. 最终重验 PASS。
-
-## Warnings
-- [WARN] iot_platform：高密度（2 页）但答案为「不要」（answers 注明为关键词误判 amount/mount）。
-- [WARN] dict_catalog：可疑选项 JSON 12 个（jeecg-module-demo mock 数据），已由 answers.note 声明为框架示例。
+| Task | PASS/SKIP | 备注 |
+|------|-----------|------|
+| T1 新建 PaySubject/PayMerchantSubject + mapper/service | PASS | backend 0947833；extends JeecgEntity；@TableLogic |
+| T2 修订 6 实体字段 | PASS | PayMerchant −3、PayMerchantProject −2、PayApp/PayOrder/PayRefundOrder +subjectId；PayChannelConfig 7 列由组 B 收口删除 |
+| T3 consistency test 扩展 16 表 | PASS | 双文件链真源（V20261020_1 + V20261021_1）；豁免已移除 |
+| T4 组 A commit | PASS | 0947833 |
+| T5 PaySubjectChannelConfigService + 环境级精简 + bootstrap 默认主体 | PASS | backend fd5cac2；双事件失效机制 |
+| T6 Channel*Request +subjectId 贯通 | PASS | 报文语义逐字未动 |
+| T7 通知验签主体定位 | PASS | 快照→msg_src_id 回退→失败；UnionPayNotifySubjectResolver |
+| T8 PayNoGenerator 按主体前缀 | PASS | 新重载保留旧路径回归 |
+| T9 组 B 测试 | PASS | 215 例全绿（含真实容器映射解析） |
+| T10 全量测试 | PASS | mvn -q -o test：Tests run: 215, Failures: 0, Errors: 0 |
+| T11 启动 E2E | PASS | 新 jar 重启；flyway_schema_history 20261021.1 success=1；/v1/ping 200；16 表结构核对全绿 |
+| T12 文档/账本 sync + 主仓提交 | 待主流程收口 | 本报告后执行 |
 
 ## Failures
-无。
+- 无
+
+## 备注与佐证
+- 审计/架构闭环按 F-2 先例：`audit_arch_changes` 四类空；引擎锚定主仓 git 看不到嵌套 backend 变更（缺陷 #7 已记录）；EntityGraph 已收两新表（pay_subject entities.json L18235 / pay_merchant_subject L18376，source=sql）。
+- 质量门禁方法：`check_code_quality`（projectRoot）→ `.apt/orchestration/quality-filter.cjs <输出> paycenter` → scoped paycenter = 0 issues（同 F-2 verify line 的既定方法）。
+- env bootstrap：本地 paycenter-app.env 无 PAY_UNIONPAY_* 凭证（用户未提供参数），bootstrap 按设计跳过且 pay_subject 0 行；主体凭证数据测试经单测与容器真实 MySQL 用例覆盖。
+- 错误码零新增：缺映射复用 `MERCHANT_DISABLED(2001)` + detail「商户未开通当前支付主体」。
 
 ## Recommended next steps
-- `/finish-feature`（闭环：audit / refresh / 契约）→ `batch_complete_slice` 标 F-2 done。
+- Overall PASS → `/finish-feature`（闭环）→ `batch_complete_slice(F-6, done)` → 泊车解除（S3/S4/S5 重入队）

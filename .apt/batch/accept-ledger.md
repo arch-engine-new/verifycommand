@@ -1,5 +1,5 @@
 # APT 批量台账（batch-mcp 渲染视图）
-> 共 8 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 9 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## L-1
 - batch：batch-1
@@ -56,3 +56,10 @@
 - 类型：attestation
 - 记录：2026-10-20T23:02:49.248Z
 - 数据：{"evidence":"同 2026-10-21 07:00 用户「授权派发」；前两次翻转留痕已提交，工作区已洁后重调。","kind":"dispatchFlip"}
+
+## L-9
+- batch：-
+- item：F-3,F-4,F-5
+- 类型：attestation
+- 记录：2026-10-21T09:35:11.207Z
+- 数据：{"evidence":"用户 2026-10-20 确认 order=before_s3；S2.5（F-6，P0）必须在 F-3 之前执行且 F-3/F-4/F-5 spec 需按新支付主体模型修订。泊车 F-3/F-4/F-5 让位，完成后 S3/S4/S5 重入队继续。","itemIds":["F-3","F-4","F-5"],"kind":"userOverride"}
