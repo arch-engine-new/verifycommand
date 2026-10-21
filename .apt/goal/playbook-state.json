@@ -152,8 +152,15 @@
             "id": "F-8:PB-2",
             "attempts": 1,
             "action": "implement_plan",
+            "status": "done",
+            "notes": "组A 39f567c+组B 0990c65+组C 451c5b5+组D 3612712；mvn test 383/383 绿；E2E 冒烟 4 断言过（ping 0000/1003/1002/新端点1003）；test-cases paycenter-s3.md 产出"
+        },
+        {
+            "id": "F-8:PB-3",
+            "attempts": 1,
+            "action": "verify",
             "status": "in_progress",
-            "notes": "组A 39f567c+组B 0990c65+组C 451c5b5(349绿,退款confirmResult唯一入口+PayNotifyHandler落地)；组D派发中"
+            "notes": "进行中：质量后台扫描+logic-sync+audit（四类空，缺陷#7注记）"
         }
     ]
 }
