@@ -232,7 +232,7 @@
             "attempts": 1,
             "action": "implement_plan",
             "status": "in_progress",
-            "notes": "组A b4c56c6+db67efe（481绿；AdminLogWriter/6端点/V20261022_2菜单字典；组B交接要点在手）；组B派发中；组B 155573d（508绿；商户CRUD/小区关联/映射save-del-preview在途保护/缓存事件不发决策）"
+            "notes": "组A b4c56c6+db67efe（481绿；AdminLogWriter/6端点/V20261022_2菜单字典；组B交接要点在手）；组B派发中；组B 155573d（508绿；商户CRUD/小区关联/映射save-del-preview在途保护/缓存事件不发决策）；【冲突处置】原组C执行体停写退场（零污染），重发执行体在途推进——以重发者为准；【裁决】trades admin 端日期跨度以 page.logic 为准≤90天（/v1 对外仍 31 天冻结不动）；通道健康字段按 page.logic 命名 unionpaySuccessRate1h+响应带 windowMinutes；退款重试=先 convergeRefunding 兜底，明确即返收敛结果，仍 REFUNDING 拒绝 3004+提示（不改 S3 placeRefund 语义）；【验收必查】callback 重推恰 1 条 CALLBACK_RETRY 日志（manualRetry 内部已写，admin 侧禁双写）；pay_admin_log 不在 TestKit 清理内需按 target 前缀自清；diff 列 JSON 断言用 parse；分页上限新接口≤100（A/B 的 200 留组 D 统一）；组C c81799a（546绿；三裁决落地✓；回调单留痕✓；分页≤100✓；健康窗口按spec取15min、命名与page.logic 1h字段冲突转connect定稿，组D加windowMinutes）；组D派发中"
         }
     ]
 }
