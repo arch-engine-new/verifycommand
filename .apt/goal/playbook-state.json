@@ -40,6 +40,12 @@
             "startedAt": "2026-10-22T02:06:00Z",
             "verifyResult": "PASS",
             "finishedAt": "2026-10-22T09:40:00Z"
+        },
+        {
+            "id": "F-10",
+            "description": "交付 the 操作后台8页(含支付主体页) for 支付中心（S5）",
+            "status": "running",
+            "startedAt": "2026-10-22T09:45:00Z"
         }
     ],
     "cursor": 4,
@@ -206,6 +212,13 @@
             "action": "finish_feature",
             "status": "done",
             "notes": "audit四类空（缺陷#7注记）；无TS契约；字典增量V20261022_1已Flyway应用success=1"
+        },
+        {
+            "id": "F-10:PB-1",
+            "action": "pm_spec",
+            "status": "blocked",
+            "attempts": 0,
+            "notes": "refine 模式：产出「支付主体」页 page.logic+manifest、merchants 页映射弹窗修订、_pages.md 变更页 approved=no——走 -create --refine（armed 流程）；阻塞：refine 前置 docs/prd/*.md 缺失（PRD 在 paycenter/01、20），入口分叉待用户定夺（见 .apt/handoff/2026-10-22-opencode-handoff.md）"
         }
     ]
 }
