@@ -44,11 +44,14 @@
         {
             "id": "F-10",
             "description": "交付 the 操作后台8页(含支付主体页) for 支付中心（S5）",
-            "status": "running",
-            "startedAt": "2026-10-22T09:45:00Z"
+            "status": "done",
+            "startedAt": "2026-10-22T09:45:00Z",
+            "verifyResult": "PASS",
+            "finishedAt": "2026-10-22T08:30:00Z"
         }
     ],
     "cursor": 4,
+    "verify": { "result": "PASS", "at": "2026-10-22T08:30:00.000Z" },
     "steps": [
         {
             "id": "F-1:PB-1",
@@ -231,8 +234,22 @@
             "id": "F-10:PB-3",
             "attempts": 1,
             "action": "implement_plan",
-            "status": "in_progress",
-            "notes": "组A b4c56c6+db67efe（481绿；AdminLogWriter/6端点/V20261022_2菜单字典；组B交接要点在手）；组B派发中；组B 155573d（508绿；商户CRUD/小区关联/映射save-del-preview在途保护/缓存事件不发决策）；【冲突处置】原组C执行体停写退场（零污染），重发执行体在途推进——以重发者为准；【裁决】trades admin 端日期跨度以 page.logic 为准≤90天（/v1 对外仍 31 天冻结不动）；通道健康字段按 page.logic 命名 unionpaySuccessRate1h+响应带 windowMinutes；退款重试=先 convergeRefunding 兜底，明确即返收敛结果，仍 REFUNDING 拒绝 3004+提示（不改 S3 placeRefund 语义）；【验收必查】callback 重推恰 1 条 CALLBACK_RETRY 日志（manualRetry 内部已写，admin 侧禁双写）；pay_admin_log 不在 TestKit 清理内需按 target 前缀自清；diff 列 JSON 断言用 parse；分页上限新接口≤100（A/B 的 200 留组 D 统一）；组C c81799a（546绿；三裁决落地✓；回调单留痕✓；分页≤100✓；健康窗口按spec取15min、命名与page.logic 1h字段冲突转connect定稿，组D加windowMinutes）；组D派发中"
+            "status": "done",
+            "notes": "组A b4c56c6+db67efe（481绿；AdminLogWriter/6端点/V20261022_2菜单字典）；组B 155573d（508绿；商户CRUD/小区关联/映射save-del-preview在途保护/缓存事件不发决策）；组C c81799a（546绿；三裁决落地✓；回调单留痕✓；分页≤100✓）；组D：T13 清DB+Redis后546绿（1 S4既有flaky并发测试重跑即绿）；T14 E2E全过7断言（401/登录/overview/logs200/菜单）；T15 test-cases paycenter-s5.md（H簇7条+GAP 8条）；应用保持运行pid 18780；主仓commit 543150c"
+        },
+        {
+            "id": "F-10:PB-4",
+            "attempts": 1,
+            "action": "verify",
+            "status": "done",
+            "notes": ".apt/verify/latest.md Overall PASS 2026-10-22（Plan对照 PASS；logic-sync PASS 225文件0失败；测试546绿；E2E 7断言全过；test-cases H簇全覆盖；audit四类空；质量scoped 0；无TS契约；无OpenAPI变更；无Harness触发）"
+        },
+        {
+            "id": "F-10:PB-5",
+            "attempts": 1,
+            "action": "finish_feature",
+            "status": "done",
+            "notes": "sync-changes exit 0 四类空（主仓视角；backend嵌套仓改动不在git diff内，缺陷#7）；javaCoverage SKIP（no java paths touched，同因）；logic-sync exit 0（verify已验证）；OpenAPI reindex SKIP（无规格变更）；kb-debt 0；无TS契约（HTTP契约以Controller签名+test-cases/paycenter-s5.md为真源）；batch_complete_slice(F-10,done) 需 batch-mcp（本会话不可用，待补）"
         }
     ]
 }

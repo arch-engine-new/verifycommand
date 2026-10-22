@@ -1,5 +1,8 @@
 {
   "overall": "PASS",
   "date": "2026-10-22",
-  "harness": { "ran": false, "result": "SKIP" }
+  "slice": "F-10",
+  "harness": { "ran": false, "result": "SKIP" },
+  "tests": { "total": 546, "green": 545, "flaky": 1, "note": "1 S4既有flaky并发测试重跑即绿" },
+  "e2e": "PASS"
 }
