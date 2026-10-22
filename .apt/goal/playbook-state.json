@@ -36,11 +36,13 @@
         {
             "id": "F-9",
             "description": "实现 the 可靠性闭环 for 支付中心（S4）",
-            "status": "running",
-            "startedAt": "2026-10-22T02:06:00Z"
+            "status": "done",
+            "startedAt": "2026-10-22T02:06:00Z",
+            "verifyResult": "PASS",
+            "finishedAt": "2026-10-22T09:40:00Z"
         }
     ],
-    "cursor": 3,
+    "cursor": 4,
     "steps": [
         {
             "id": "F-1:PB-1",
@@ -188,8 +190,22 @@
             "id": "F-9:PB-2",
             "attempts": 1,
             "action": "implement_plan",
-            "status": "in_progress",
-            "notes": "组A 61faa5c+组B 263870b+组C 148f21d（463绿；钉钉告警全特性/Reconcile/Hanging/R8并发+停机接管）；组D派发中"
+            "status": "done",
+            "notes": "组A 61faa5c+组B 263870b+组C 148f21d+组D 无码收口；463绿两验；E2E全项过"
+        },
+        {
+            "id": "F-9:PB-3",
+            "attempts": 1,
+            "action": "verify",
+            "status": "done",
+            "notes": ".apt/verify/latest.md Overall PASS 2026-10-22（质量scoped 0/logic-sync 231-0/audit四类空）"
+        },
+        {
+            "id": "F-9:PB-4",
+            "attempts": 1,
+            "action": "finish_feature",
+            "status": "done",
+            "notes": "audit四类空（缺陷#7注记）；无TS契约；字典增量V20261022_1已Flyway应用success=1"
         }
     ]
 }

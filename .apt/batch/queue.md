@@ -1,5 +1,5 @@
 # APT 批量队列（batch-mcp 渲染视图）
-> 共 10 项（pending x3 / done x3 / parked x4）｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 10 项（in-progress x1 / done x5 / parked x4）｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## F-1
 - 类型：feature
