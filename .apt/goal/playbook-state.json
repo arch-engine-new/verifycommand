@@ -222,9 +222,17 @@
         },
         {
             "id": "F-10:PB-2",
-            "attempts": 0,
+            "attempts": 1,
             "action": "plan_from_spec",
-            "status": "in_progress"
+            "status": "done",
+            "notes": "docs/apt/plans/2026-10-22-paycenter-s5-admin-console-plan.md（组A-D 15 Task，后端面；前端归 connect）"
+        },
+        {
+            "id": "F-10:PB-3",
+            "attempts": 1,
+            "action": "implement_plan",
+            "status": "in_progress",
+            "notes": "组A（菜单字典增量+AdminLogWriter+主体管理API）派发中"
         }
     ]
 }
