@@ -216,9 +216,15 @@
         {
             "id": "F-10:PB-1",
             "action": "pm_spec",
-            "status": "blocked",
+            "status": "done",
+            "attempts": 1,
+            "notes": "refine 完成：pay-subject 新页 logic(139行)+manifest；merchants +25 纯增量；_pages.md 两行 approved=no；docs/prd/20 §11 追加；check-create-prd PASS；check-refine-fidelity 8/8 PASS；10 项开放项入报告"
+        },
+        {
+            "id": "F-10:PB-2",
             "attempts": 0,
-            "notes": "refine 模式：产出「支付主体」页 page.logic+manifest、merchants 页映射弹窗修订、_pages.md 变更页 approved=no——走 -create --refine（armed 流程）；阻塞：refine 前置 docs/prd/*.md 缺失（PRD 在 paycenter/01、20），入口分叉待用户定夺（见 .apt/handoff/2026-10-22-opencode-handoff.md）"
+            "action": "plan_from_spec",
+            "status": "in_progress"
         }
     ]
 }

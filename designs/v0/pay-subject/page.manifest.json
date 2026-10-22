@@ -1,0 +1,23 @@
+{
+    "pageId":  "pay-subject",
+    "id":  "pay-subject",
+    "pageType":  "list",
+    "feature":  "paycenter",
+    "title":  "支付主体管理",
+    "description":  "S2.5 多支付主体管理（R14）：pay_subject 列表/新增/编辑/启停/凭证重置；商户号与终端号只显末 4 位，凭证只显示已配置/未配置且永不回显明文；scene 走字典 pay_scene；一期不提供删除",
+    "route":  "/paycenter/pay-subject",
+    "source":  "generated",
+    "generatedBy":  "apt-create-refine(S2.5)",
+    "logicFile":  "designs/v0/pay-subject/page.logic.md",
+    "schema":  "L",
+    "relatedDocs":  [
+                        "docs/schema/paycenter-s25-multi-subject-schema.md",
+                        "docs/superpowers/specs/2026-10-20-paycenter-s5-admin-console-design.md"
+                    ],
+    "prd":  [
+                "docs/prd/20-首筑操作后台设计.md",
+                "docs/prd/01-支付产品需求文档-PRD.md"
+            ],
+    "status":  "pending-review",
+    "generatedAt":  "2026-10-22T09:46:48+08:00"
+}

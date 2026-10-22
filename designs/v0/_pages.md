@@ -8,8 +8,9 @@ PRD：`paycenter/20-首筑操作后台设计.md`（§4 功能明细、§5 管理
 |---------|-------|---------|----------|--------|-------|
 | login | 登录页（P1） | ready | yes | no | /login；单按钮登录（角色由账号决定）、图形验证码、5 次锁 15 分钟 |
 | dashboard | 工作台（P2） | ready | yes | no | /paycenter/dashboard；「需人工核查」= manual_check；通道健康建议并入 A10 |
-| merchants | 商户管理（P3） | ready | yes | no | /paycenter/merchants；运营只读；3 个支付方式开关；关联小区可增删 |
+| merchants | 商户管理（P3） | ready | no | no | /paycenter/merchants；运营只读；3 个支付方式开关；关联小区可增删；S2.5 映射区块修订待审（弹窗新增「子商户号映射」，2026-10-22，来源 F-6） |
 | trades | 交易查询（P4） | ready | yes | no | /paycenter/trades；三项待确认已按 PRD 定论收敛（AI 自答 2026-10-20，证据：20-设计.md §P4 L88-91/L205-208、§P5 L94）：银联流水号入详情弹窗（channel_seq）；退款列表含原支付单列可联动；流水/账单明细放详情子表 |
 | refunds | 退款处理（P5） | ready | yes | no | /paycenter/refunds；全额锁定、360 天、提交退款二次确认（已补） |
 | agreements | 协议留痕（P6） | ready | yes | no | /paycenter/agreements；关键词必填、手机号需关联用户系统 |
 | logs | 操作日志（P7） | ready | yes | no | /paycenter/logs；复用 Jeecg sys_log 扩展，关闭删除 |
+| pay-subject | 支付主体管理（P8） | ready | no | no | /paycenter/pay-subject；S2.5 新增页（R14，来源 F-6，2026-10-22）：pay_subject 列表/新增/编辑/启停/凭证重置；商户号/终端号只显末 4 位；凭证只显示「已配置/未配置」永不回显明文；scene 字典 pay_scene；一期不提供删除；仅管理员 |
