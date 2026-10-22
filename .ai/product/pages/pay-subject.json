@@ -1,0 +1,61 @@
+{
+  "pageId": "pay-subject",
+  "title": "支付主体管理",
+  "capabilities": [
+    "dict_options",
+    "list",
+    "payment"
+  ],
+  "signals": [
+    {
+      "kind": "payment",
+      "excerpt": "# 支付主体管理（P8）",
+      "path": "designs/v0/pay-subject/page.logic.md"
+    },
+    {
+      "kind": "list",
+      "excerpt": "> 技术栈 JeecgBoot，界面按 Jeecg Vue3（Ant Design Vue）列表页 + 弹窗表单风格（与商户管理 P3 一致）。",
+      "path": "designs/v0/pay-subject/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| scene | Select | dict | `pay_scene`（schema 记为系统字典 pc_dict_pay_scene，4 项：APP / WECHAT_MP / MINI_PROGRAM / H5） | itemValue | itemText | 无 | 打开弹窗、查询区加载时 |",
+      "path": "designs/v0/pay-subject/page.logic.md"
+    },
+    {
+      "kind": "dict_options",
+      "excerpt": "| channelCode | Select | api | `listChannels`（启用通道，一期仅 UNIONPAY） | channelCode | channelName | 无 | 打开弹窗时 |",
+      "path": "designs/v0/pay-subject/page.logic.md"
+    }
+  ],
+  "sourcePath": "designs/v0/pay-subject/page.logic.md",
+  "contentHash": "5e93927d9674d8e9e150e1bd5dee2d94e1d6e408bedbe79f050c4baf443f186e",
+  "optionSources": [
+    {
+      "field": "scene",
+      "control": "Select",
+      "source": "dict",
+      "intentApiOrDictType": "`pay_scene`（schema 记为系统字典 pc_dict_pay_scene，4 项：APP / WECHAT_MP / MINI_PROGRAM / H5）"
+    },
+    {
+      "field": "channelCode",
+      "control": "Select",
+      "source": "api",
+      "intentApiOrDictType": "`listChannels`（启用通道，一期仅 UNIONPAY）"
+    }
+  ],
+  "archObligations": [
+    {
+      "kind": "dict_catalog",
+      "ref": "`pay_scene`（schema 记为系统字典 pc_dict_pay_scene，4 项：APP / WECHAT_MP / MINI_PROGRAM / H5）",
+      "storage": "db_required",
+      "pageId": "pay-subject"
+    },
+    {
+      "kind": "list_api",
+      "ref": "`listChannels`（启用通道，一期仅 UNIONPAY）",
+      "storage": "db_required",
+      "pageId": "pay-subject"
+    }
+  ]
+}

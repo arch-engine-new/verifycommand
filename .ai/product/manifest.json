@@ -6,8 +6,9 @@
     "login",
     "logs",
     "merchants",
+    "pay-subject",
     "refunds",
     "trades"
   ],
-  "updatedAt": "2026-10-21T04:18:14.397Z"
+  "updatedAt": "2026-10-22T01:51:24.857Z"
 }
