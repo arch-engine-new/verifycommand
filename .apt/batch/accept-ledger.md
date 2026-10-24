@@ -1,5 +1,5 @@
 # APT 批量台账（batch-mcp 渲染视图）
-> 共 16 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 17 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## L-1
 - batch：batch-1
@@ -112,3 +112,10 @@
 - 类型：attestation
 - 记录：2026-10-24T10:12:07.358Z
 - 数据：{"evidence":"用户在 intake 停车线后明确指令「run,」（--start 手动触发等价），当面授权派发后台执行体跑 F-12 全链（2026-10-24 会话）","kind":"dispatchFlip"}
+
+## L-17
+- batch：-
+- item：-
+- 类型：attestation
+- 记录：2026-10-24T10:13:28.257Z
+- 数据：{"evidence":"用户明确指令「run,」授权派发；主仓已提交（0b03c97）工作区已洁，precondition 应通过（2026-10-24 会话）","kind":"dispatchFlip"}
