@@ -1,5 +1,5 @@
 # APT 批量台账（batch-mcp 渲染视图）
-> 共 14 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 16 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## L-1
 - batch：batch-1
@@ -98,3 +98,17 @@
 - 类型：attestation
 - 记录：2026-10-24T01:20:59.503Z
 - 数据：{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」；main-session-commit 已清（accept-ledger.md 已补提交，剩余 batch.db/tool-call-log 为豁免清单内工具自写产物）","kind":"dispatchFlip"}
+
+## L-15
+- batch：batch-4
+- item：F-12
+- 类型：acceptance-unit
+- 记录：2026-10-24T10:09:58.385Z
+- 数据：{"aiSelfAnswered":false,"criteria":"银商下单/查询/退款/退款查询/关单 5 接口调用后 DB（pay_channel_message）可查对应请求+响应原文记录，字段含 api 类型/respCode/HTTP 状态/耗时/mchntOrderId/时间戳；落库失败降级不阻断主交易；单测覆盖写库路径","reproduction":null,"sliceId":"F-12","status":"pending-acceptance"}
+
+## L-16
+- batch：-
+- item：-
+- 类型：attestation
+- 记录：2026-10-24T10:12:07.358Z
+- 数据：{"evidence":"用户在 intake 停车线后明确指令「run,」（--start 手动触发等价），当面授权派发后台执行体跑 F-12 全链（2026-10-24 会话）","kind":"dispatchFlip"}

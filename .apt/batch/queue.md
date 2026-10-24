@@ -1,5 +1,5 @@
 # APT 批量队列（batch-mcp 渲染视图）
-> 共 12 项（done x1 / parked x4 / archived x7）｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 13 项（pending x1 / parked x4 / archived x8）｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## F-1
 - 类型：feature
@@ -155,5 +155,19 @@
 - 分流：轻链：/feature §0.2 落痕 → 片内写复现测试（先红后绿）→ verify；联调先红（子商户号查询已建单被拒）后绿（主商户号通过）
 - 测试策略：-
 - 确认：AI 自答（证据: PDF 逐接口审计报告 + 已验证下单基准报文 vaMchntNo=主商户号 + UnionPayChannel.java 四处当前取子商户号快照；未经用户确认——PDF 对查询/退款/关单仅写"商户号"未明确主/子，最终以联调先红后绿为准）
+- 泊车：无
+- 依赖：无
+
+## F-12
+- 类型：feature
+- 优先级：P2
+- 标题：银商通道进出 HTTP 报文落库留痕（pay_channel_message）
+- 收敛记录：目的：银商通道全量进出 HTTP 报文持久化留痕，替代当前仅 DEBUG 日志（paycenter.unionpay.raw）的方案，支撑联调排障与对账审计。
+边界——做：新建报文留痕表（pay_channel_message），在 UnionPayHttpClient 统一出入口拦截落库，覆盖下单/查询/退款/退款查询/关单 5 接口的请求+响应原文（body 无密钥，签名在 Authorization 头不落）、api 类型、respCode、HTTP 状态、耗时、关联 mchntOrderId、时间戳；脱敏规则不适用（用户已定原文）。不做：不落 Authorization 头（含签名）；不动现有 pay_notify_record 回调留痕；不改报文结构；本期仅银商，表预留 channel 字段。
+验收：①5 接口任一调用后 DB 可查对应请求+响应记录，字段完整可按 mchntOrderId 检索；②落库失败不阻断主交易（异步/捕获降级）；③单测覆盖拦截器写库路径。
+- 截图：无
+- 分流：全链：auto_brainstorm → plan_from_spec → implement_plan → verify → finish_feature
+- 测试策略：-
+- 确认：已确认
 - 泊车：无
 - 依赖：无
