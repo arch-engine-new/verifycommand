@@ -1,3 +1,5 @@
 .ai/arch/
 
 .apt/local/
+
+.apt/tool-call-log.jsonl
