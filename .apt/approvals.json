@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "spec": "docs/superpowers/specs/2026-10-24-paycenter-f12-channel-message-design.md",
+    "approval": "auto_approved",
+    "risk": "low",
+    "at": "2026-10-24T18:23:00+08:00",
+    "reason": "改动文件 <8；无 MCP/arch/契约关键词；用户已确认需求边界"
+  }
+]

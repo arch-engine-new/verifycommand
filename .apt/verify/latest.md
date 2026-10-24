@@ -1,46 +1,54 @@
 # Verify Report
 
-**Plan:** 无独立 plan（B-1 bug 轻链；对照锚点 = 任务描述修复点 1-4 + .apt/batch/queue.md B-1 收敛记录）
+**Plan:** docs/apt/plans/2026-10-24-paycenter-f12-channel-message-plan.md（F-12 银商通道 5 接口进出 HTTP 报文落库留痕）
 **Overall:** PASS
 **Date:** 2026-10-24
 
 ## Summary
 | 维度 | 结果 |
 |------|------|
-| Plan 对照 | SKIP（无 plan 对照模式；轻链锚点 4 修复点全落地：4 接口 vaMchntNo→主商户号、refund vaFld 补 satType+satInfo、oriMerOrderId 落库链路、先红后绿测试） |
-| 架构 audit | PASS（audit_arch_changes since=last-scan(bd474c4e)：modified/new/deleted/unregistered 四类皆空；layerRulesUnchecked 为既有 WARN） |
-| 设计 audit | SKIP（无 UI/前端设计知识层变更） |
-| 产品对齐 | PASS（.ai/product/last-scan.json fileHashes 逐个 SHA256 核验全 MATCH，含 B-1 入列提交翻动 approved 的 _pages.md；无 unansweredConcerns） |
-| logic 同步 | PASS（降级核验：仓内 scripts/check-logic-sync.cjs 缺失（git 历史从未提交），改以 git diff HEAD 核验 designs/v0 + .apt/create 零变更，无产品源↔代码失配面；脚本缺失记 WARN 待 APT 工具链修复） |
+| Plan 对照 | PASS（Task 1-5 全落地，R1-R7 全覆盖；Task 2 实现偏离有记录，见备注） |
+| 架构 audit | PASS（audit_arch_changes since=last-scan(bd474c4e)：modified/new/deleted/unregistered 四类皆空；layerRulesUnchecked 为既有 WARN；backend 嵌套仓审计锚主仓 git 为已知缺陷#7 口径） |
+| 设计 audit | SKIP（纯后端切片，无 UI/前端设计知识层变更） |
+| 产品对齐 | PASS（designs/、.ai/、.apt/create/ 零变更——git status 核验；无产品源翻动） |
+| logic 同步 | PASS（降级核验：仓内 scripts/check-logic-sync.cjs 仍缺失（APT 工具链未回补），改以 git diff 核验 designs/v0 + .apt/create 零变更，无产品源↔代码失配面；脚本缺失沿 B-1 记 WARN） |
 | Connect 门禁 | SKIP（无 .apt/connect 接线账本） |
 | 契约登记 | PASS（纯 Java 改动，无新增对外 TS 类型/接口） |
-| 可检索性 | PASS（search_arch 命中 UnionPayChannel/IPayRefundOrderService/PayRefundOrder，sourcePath 与现网一致） |
-| 代码质量 | PASS（scoped paycenter：0 high / 0 medium 触达本切片改动文件；仓级 9040 issues 为 jeecgboot-vue3 等前端既有历史债，沿 S5 verify 口径不判本切片） |
-| 测试/构建 | PASS（UnionPay*Test 117/117 绿；编排层 PayOrderCreateDbTest 等 4 个 DbTest 57/57 绿；Flyway V20261024_1 应用成功 schema→v20261024.1） |
-| 测试用例覆盖率 | SKIP（B-1 无新增 designs/v0/*/test-cases.md；回归断言由 UnionPayChannelQueryRefundCloseTest 承载：vaMchntNo==MID、refund vaFld 恰 4 键、satInfo 五字段） |
+| 可检索性 | PASS（search_arch 命中 UnionPayHttpClient，sourcePath 与现网一致；新资产在 finish_feature 步 refresh） |
+| 代码质量 | PASS（scoped：0 high / 0 medium 触达本切片 8 个改动文件（仓级 9040 issues 报告全文 grep 零命中）；仓级 9040 为 jeecgboot-vue3 等前端既有历史债，沿 S5/B-1 verify 口径不判本切片） |
+| 测试/构建 | PASS（mvn test `UnionPay*Test,PayChannelMessage*Test` 125/125 绿 = 回归基线 117 + 新增 8；Flyway V20261024_2 success=1、pay_channel_message 表在库；打包成功并重启 80 端口探活 code=0000） |
+| 测试用例覆盖率 | SKIP（无 designs/v0/*/test-cases.md 增量；R3/R5 由新增 8 项单测承载：成功/超时/重试逐条/落库异常不阻断/吞异常/异步提交/池关闭降级） |
 | 外部 Harness | SKIP（无触发） |
 
 ## Harness
 SKIP：无外部 Harness 触发。
 
 ## Plan Coverage
-无 plan → SKIP。轻链锚点逐项：
-| 修复点 | 结果 | 证据 |
-|--------|------|------|
-| 1. queryOrder/queryRefund/refund/closeOrder vaMchntNo→主商户号 | PASS | UnionPayChannel.mainMchntConfig() 统一取 cfg.getMainMchntNo()，缺则 1001；测试断言报文头 vaMchntNo==MID |
-| 2. refund vaFld 补 satType+satInfo 单条 | PASS | vaFld 恰 4 键（newShopFlag/isSubMchntPay/satType/satInfo）；satInfo={merId=子商户号, refundOrderId, refundAmt, oriMerOrderId, payBear=Y} |
-| 3. oriMerOrderId 落库链路 | PASS | Flyway V20261024_1 加 pay_order.sub_mchnt_order_id；PayOrder 实体 + buildOrder 落库 + PayRefundTradeService 快照读取 + ChannelRefundRequest.oriMerOrderId |
-| 4. 先红后绿测试 | PASS | UnionPayChannelQueryRefundCloseTest 断言改写后先红（修复前 vaMchntNo==子商户号）后绿（117/117） |
+| Task | 结果 | 证据 |
+|------|------|------|
+| T1 Flyway + 实体 + Mapper + Service | PASS | V20261024_2__paycenter_f12_channel_message.sql 建表（3 索引）；PayChannelMessage（@TableName、ASSIGN_ID、不继承 JeecgEntity）；PayChannelMessageMapper；IPayChannelMessageService + Impl（内嵌 ExecutorService core=0/max=2/queue=200，吞异常降级，@PreDestroy shutdown） |
+| T2 事件与异步监听 | PASS（偏离） | 未建独立 Event/Listener：项目无 @EnableAsync/@Async 使用史，启用全局代理有副作用风险；改由 Service 内嵌线程池异步（plan 1.5 风险1 的等效规避），UnionPayHttpClient 以 @Autowired(required=false) setter 可选注入替代 ApplicationEventPublisher |
+| T3 UnionPayHttpClient 拦截 | PASS | post() Outcome 判定后 persistMessage（每次 attempt 一条）；send() 异常 throw 前 persistSendFailure（respCode=TIMEOUT/IO_ERROR，responseBody/httpStatus=null）；仅 body 入留痕（R4）；三层 try-catch 不阻断（R3） |
+| T4 单测 + 回归基线 | PASS | UnionPayHttpClientMessageTest 4 项（成功字段全核/R4 无 OPEN-BODY-SIG+APP_KEY、超时 TIMEOUT+null、落库异常主流程仍 0000、9200 重试逐条 9200→0000）+ PayChannelMessageServiceTest 4 项（吞异常/正常 insert/异步提交落库/池关闭不抛）；合计 125/125 绿 |
+| T5 打包重启 80 + 冒烟 | PASS | mvn package 成功；后台重启 80；ping code=0000；flyway_schema_history 含 V20261024_2 success=1；SHOW TABLES 命中 pay_channel_message |
+
+| Rn | 结果 | 证据 |
+|----|------|------|
+| R1 请求+响应原文落库 | PASS | busyRetryPersistsEveryAttempt：2 次 attempt 各一条（9200→0000） |
+| R2 按 mchntOrderId 检索 | PASS | DDL idx_mchnt_order_id；extractMchntOrderId 失败兜底 null |
+| R3 落库失败不阻断 | PASS | persistFailureDoesNotBreakMainFlow + saveMessageQuietlySwallowsException + saveAsyncQuietlyDoesNotThrowAfterShutdown |
+| R4 不落 Authorization | PASS | successPersistsRawMessage 断言留痕无 OPEN-BODY-SIG/APP_KEY |
+| R5 单测覆盖写库路径 | PASS | 新增 8 项单测全绿 |
+| R6 预留 channel 字段 | PASS | DDL channel 列 + 实体固定 'unionpay' |
+| R7 Flyway migration | PASS | V20261024_2 success=1 |
 
 ## Failures
 - 无
 
 ## 备注
-- **联调证据（后绿受限）**：对订单 14BF202610240012553580655363 发 online/query——请求 vaMchntNo=898****2255（主商户号），HTTP 200 到达业务查询阶段（非 SA16 平台拒单），返回 NO_ORDER；JDBC 查库该单 status=CLOSED（未支付已关单，银商侧老化不可查），NO_ORDER 无法区分红/绿。「主商户号查询返回订单详情」列为**待用户确认项**（需一笔未支付活跃订单或新建 1 分单，未授权 create 副作用故未自建）。
-- **真实退款/关单涉及资金，未执行**，列入待用户确认：需人工实付 1 分后设 PAY_UNIONPAY_LIVE_PAID_ORDER_ID + PAY_UNIONPAY_LIVE_SUB_ORDER_ID 跑 UnionPayLiveTest#refundOnPaidOrder。
-- **存量订单风险**：2026-10-24 前落库订单 sub_mchnt_order_id=null，对其退款会被 validateRefund 以 1001（oriMerOrderId 必填）拦截——符合预期（分账退款无 oriMerOrderId 必被银商拒），需运营侧知悉。
-- **WARN**：scripts/check-logic-sync.cjs 仓内缺失（AGENTS.md 引用之），本轮以 git diff 人工降级核验；建议 APT 工具链回补脚本。
+- **Task 2 实现偏离（已评估等效）**：plan 原设计 Spring ApplicationEvent + @Async @EventListener；实现改为 Service 内嵌 ExecutorService（core=0,max=2,queue=200，拒绝仅记 WARN）。理由：项目无 @EnableAsync 使用史，启用全局异步代理对既有模块有不可控副作用；内嵌池满足同一 R3 降级语义且作用域封闭。plan 文档如实保留原设计，此处记录偏离。
+- **WARN（沿 B-1）**：scripts/check-logic-sync.cjs 仓内缺失，logic 同步维度以 git diff 降级核验；建议 APT 工具链回补脚本。
+- **联调提示**：应用在 80 端口运行中（natapp 联调环境），pay_channel_message 表已就绪，后续真实下单/查询/退款报文将自动留痕，可经 SQL 按 mchnt_order_id 检索核对。
 
 ## Recommended next steps
-- Overall **PASS** → backend 子模块提交 fix(paycenter) → 主仓提交子模块指针 → batch_complete_slice(B-1, done) → playbook-gate → batch_lock_release → push upstream
-- 待用户确认：真实退款/关单资金操作、主商户号查询后绿返回订单详情
+- Overall **PASS** → finish_feature（audit/refresh 新资产）→ batch_complete_slice(F-12, done) → 主仓提交 .apt 产物与子模块指针（backend 176d230）→ batch_lock_release → push
