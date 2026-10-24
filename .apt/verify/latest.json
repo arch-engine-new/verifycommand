@@ -1,8 +1,12 @@
 {
   "overall": "PASS",
-  "date": "2026-10-22",
-  "slice": "F-10",
+  "date": "2026-10-24",
+  "slice": "B-1",
   "harness": { "ran": false, "result": "SKIP" },
-  "tests": { "total": 546, "green": 545, "flaky": 1, "note": "1 S4既有flaky并发测试重跑即绿" },
-  "e2e": "PASS"
+  "tests": { "total": 174, "green": 174, "flaky": 0, "note": "UnionPay*Test 117/117 + 编排层 4 DbTest 57/57" },
+  "e2e": "SKIP",
+  "pendingUserConfirmation": [
+    "真实退款/关单（资金操作，禁止自动执行）",
+    "主商户号查询后绿返回订单详情（14BF... 已 CLOSED 老化，NO_ORDER 不可分红绿）"
+  ]
 }
