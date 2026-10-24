@@ -1,5 +1,5 @@
 # APT 批量台账（batch-mcp 渲染视图）
-> 共 12 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 13 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## L-1
 - batch：batch-1
@@ -84,3 +84,10 @@
 - 类型：attestation
 - 记录：2026-10-24T01:15:32.752Z
 - 数据：{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」——平台侧预授权（子 agent 派发/读写/执行）核对通过，由用户当轮指令直接授权","kind":"dispatchFlip"}
+
+## L-13
+- batch：-
+- item：-
+- 类型：attestation
+- 记录：2026-10-24T01:18:58.366Z
+- 数据：{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」；main-session-commit 前置已清（主仓两笔提交：backend 4b4eff0 报文修复 + 速查表、APT 管理面与 goal.md）——平台侧预授权核对通过","kind":"dispatchFlip"}
