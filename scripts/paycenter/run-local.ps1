@@ -26,7 +26,6 @@ $PcAppEnvFile = Join-Path $PcLocalDir 'paycenter-app.env'
 $PcPidFile = Join-Path $PcRepoRoot '.apt\paycenter-run.pid'
 $PcLogFile = Join-Path $PcRepoRoot '.apt\paycenter-run.log'
 $PcErrLogFile = Join-Path $PcRepoRoot '.apt\paycenter-run.err.log'
-$PcPingUrl = 'http://127.0.0.1:8080/jeecg-boot/v1/ping'
 
 function Read-PcEnvFile {
     param([string]$Path)
@@ -130,13 +129,15 @@ function Find-PcStartJar {
 
 function Wait-PcPing {
     param([System.Diagnostics.Process]$Process)
+    $port = if ([string]::IsNullOrEmpty($env:SERVER_PORT)) { '8080' } else { $env:SERVER_PORT }
+    $pingUrl = 'http://127.0.0.1:' + $port + '/jeecg-boot/v1/ping'
     $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
     while ((Get-Date) -lt $deadline) {
         if ($Process.HasExited) {
             throw ('[paycenter] process exited early with code ' + $Process.ExitCode + ', see ' + $PcLogFile)
         }
         try {
-            $resp = Invoke-WebRequest -Uri $PcPingUrl -UseBasicParsing -TimeoutSec 5
+            $resp = Invoke-WebRequest -Uri $pingUrl -UseBasicParsing -TimeoutSec 5
             if ($resp.StatusCode -eq 200) {
                 Write-Host '[paycenter] /v1/ping returned 200'
                 return
