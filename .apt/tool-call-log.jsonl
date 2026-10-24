@@ -460,3 +460,25 @@
 {"ts":"2026-10-23T20:24:05.419Z","tool":"batch_summary","args":{},"durationMs":22,"result":{"ok":true}}
 {"ts":"2026-10-24T01:15:41.451Z","tool":"batch_trigger_check","args":{"dispatchFlipAttestation":{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」——平台侧预授权（子 agent 派发/读写/执行）核对通过，由用户当轮指令直接授权"}},"result":{"ok":true},"durationMs":8732}
 {"ts":"2026-10-24T01:15:32.717Z","tool":"batch_trigger_check","args":{"dispatchFlipAttestation":{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」——平台侧预授权（子 agent 派发/读写/执行）核对通过，由用户当轮指令直接授权"}},"durationMs":8735,"result":{"ok":true}}
+{"ts":"2026-10-24T01:18:40.680Z","tool":"batch_trigger_check","args":{},"result":{"ok":true},"durationMs":23}
+{"ts":"2026-10-24T01:18:40.657Z","tool":"batch_trigger_check","args":{},"durationMs":25,"result":{"ok":true}}
+{"ts":"2026-10-24T01:18:58.937Z","tool":"batch_trigger_check","args":{"dispatchFlipAttestation":{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」；main-session-commit 前置已清（主仓两笔提交：backend 4b4eff0 报文修复 + 速查表、APT 管理面与 goal.md）——平台侧预授权核对通过"}},"result":{"ok":true},"durationMs":586}
+{"ts":"2026-10-24T01:18:58.350Z","tool":"batch_trigger_check","args":{"dispatchFlipAttestation":{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」；main-session-commit 前置已清（主仓两笔提交：backend 4b4eff0 报文修复 + 速查表、APT 管理面与 goal.md）——平台侧预授权核对通过"}},"durationMs":588,"result":{"ok":true}}
+{"ts":"2026-10-24T01:21:00.093Z","tool":"batch_trigger_check","args":{"dispatchFlipAttestation":{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」；main-session-commit 已清（accept-ledger.md 已补提交，剩余 batch.db/tool-call-log 为豁免清单内工具自写产物）"}},"result":{"ok":true},"durationMs":606}
+{"ts":"2026-10-24T01:20:59.487Z","tool":"batch_trigger_check","args":{"dispatchFlipAttestation":{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」；main-session-commit 已清（accept-ledger.md 已补提交，剩余 batch.db/tool-call-log 为豁免清单内工具自写产物）"}},"durationMs":607,"result":{"ok":true}}
+{"ts":"2026-10-24T02:03:08.103Z","tool":"query_project_status","args":{},"durationMs":3182,"result":{"ok":true}}
+{"ts":"2026-10-24T02:05:52.363Z","tool":"check_code_quality","args":{"projectRoot":"d:\\software\\dog-food"},"durationMs":94602,"result":{"ok":true}}
+{"ts":"2026-10-24T02:05:51.783Z","tool":"audit_arch_changes","args":{"since":"last-scan"},"durationMs":99220,"result":{"ok":true}}
+{"ts":"2026-10-24T02:10:29.970Z","tool":"search_arch","args":{"query":"UnionPayChannel queryOrder refund closeOrder","limit":3},"durationMs":61,"result":{"ok":true}}
+{"ts":"2026-10-24T02:15:21.826Z","tool":"batch_status","args":{},"result":{"ok":true},"durationMs":19}
+{"ts":"2026-10-24T02:15:21.806Z","tool":"batch_status","args":{},"durationMs":21,"result":{"ok":true}}
+{"ts":"2026-10-24T02:15:41.721Z","tool":"batch_complete_slice","args":{"sliceId":"B-1","status":"done","evidence":"verify PASS(.apt/verify/latest.md 2026-10-24)。测试：UnionPay*Test 117/117 绿（先红后绿：断言报文头 vaMchntNo==主商户号、refund vaFld 恰4键含 satType/satInfo 五字段）+ 编排层 4 DbTest 57/57 绿；Flyway V20261024_1 pay_order.sub_mchnt_..."},"result":{"ok":true},"durationMs":24}
+{"ts":"2026-10-24T02:15:41.696Z","tool":"batch_complete_slice","args":{"sliceId":"B-1","status":"done","evidence":"verify PASS(.apt/verify/latest.md 2026-10-24)。测试：UnionPay*Test 117/117 绿（先红后绿：断言报文头 vaMchntNo==主商户号、refund vaFld 恰4键含 satType/satInfo 五字段）+ 编排层 4 DbTest 57/57 绿；Flyway V20261024_1 pay_order.sub_mchnt_..."},"durationMs":26,"result":{"ok":true}}
+{"ts":"2026-10-24T02:15:52.775Z","tool":"batch_lock_acquire","args":{},"result":{"ok":true},"durationMs":24}
+{"ts":"2026-10-24T02:15:52.751Z","tool":"batch_lock_acquire","args":{},"durationMs":24,"result":{"ok":true}}
+{"ts":"2026-10-24T02:15:56.095Z","tool":"batch_next_slice","args":{},"result":{"ok":true},"durationMs":35}
+{"ts":"2026-10-24T02:15:56.059Z","tool":"batch_next_slice","args":{},"durationMs":37,"result":{"ok":true}}
+{"ts":"2026-10-24T02:16:02.786Z","tool":"batch_complete_slice","args":{"sliceId":"B-1","status":"done","evidence":"verify PASS(.apt/verify/latest.md 2026-10-24)。测试：UnionPay*Test 117/117 绿（先红后绿：断言报文头 vaMchntNo==主商户号、refund vaFld 恰4键含 satType/satInfo 五字段）+ 编排层 4 DbTest 57/57 绿；Flyway V20261024_1 pay_order.sub_mchnt_..."},"result":{"ok":true},"durationMs":174}
+{"ts":"2026-10-24T02:16:02.611Z","tool":"batch_complete_slice","args":{"sliceId":"B-1","status":"done","evidence":"verify PASS(.apt/verify/latest.md 2026-10-24)。测试：UnionPay*Test 117/117 绿（先红后绿：断言报文头 vaMchntNo==主商户号、refund vaFld 恰4键含 satType/satInfo 五字段）+ 编排层 4 DbTest 57/57 绿；Flyway V20261024_1 pay_order.sub_mchnt_..."},"durationMs":176,"result":{"ok":true}}
+{"ts":"2026-10-24T02:17:57.849Z","tool":"batch_lock_release","args":{},"result":{"ok":true},"durationMs":55}
+{"ts":"2026-10-24T02:17:57.793Z","tool":"batch_lock_release","args":{},"durationMs":58,"result":{"ok":true}}

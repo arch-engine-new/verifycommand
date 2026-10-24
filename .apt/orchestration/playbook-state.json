@@ -1,0 +1,20 @@
+{
+  "programMode": true,
+  "goalId": "unionpay-vamchntno-align",
+  "goalSha": "f9882ef4589f2b341ac011e7b989aed7f7aec8c63a6cf4e44c1e0384ec038703",
+  "slices": [
+    {
+      "id": "B-1",
+      "description": "银联查询/退款/退款查询/关单 vaMchntNo 对齐主商户号 + 退款补 satInfo 分账明细",
+      "status": "done",
+      "verifyResult": "PASS",
+      "finishedAt": "2026-10-24T02:20:00Z"
+    }
+  ],
+  "steps": {
+    "B-1:PB-1": { "action": "reproduce_test_red", "status": "done", "attempts": 1, "notes": "UnionPayChannelQueryRefundCloseTest 断言 vaMchntNo==主商户号 + refund vaFld satInfo；修复前红" },
+    "B-1:PB-2": { "action": "implement", "status": "done", "attempts": 1, "notes": "UnionPayChannel 四接口 mainMchntConfig() 取主商户号；refund vaFld 补 satType+satInfo；Flyway V20261024_1 sub_mchnt_order_id 落库链路；backend c969d7b" },
+    "B-1:PB-3": { "action": "verify", "status": "done", "attempts": 1, "notes": ".apt/verify/latest.md Overall PASS 2026-10-24；UnionPay*Test 117/117 + 编排层 57/57 绿；audit 四类空；产品索引哈希全 MATCH；logic-sync 脚本缺失降级 git diff 核验（WARN）；质量 scoped paycenter 0" },
+    "B-1:PB-4": { "action": "live_check", "status": "done", "attempts": 1, "notes": "对 14BF...655363 发 query：req vaMchntNo=主商户号 HTTP 200 到达业务查询，返回 NO_ORDER（该单 CLOSED 老化不可区分红绿）；真实退款/关单涉资金未执行，列待用户确认" }
+  }
+}

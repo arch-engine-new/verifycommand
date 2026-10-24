@@ -48,10 +48,18 @@
             "startedAt": "2026-10-22T09:45:00Z",
             "verifyResult": "PASS",
             "finishedAt": "2026-10-22T08:30:00Z"
+        },
+        {
+            "id": "B-1",
+            "description": "银联查询/退款/退款查询/关单 vaMchntNo 对齐主商户号 + 退款补 satInfo 分账明细",
+            "status": "done",
+            "startedAt": "2026-10-24T01:20:00Z",
+            "verifyResult": "PASS",
+            "finishedAt": "2026-10-24T02:20:00Z"
         }
     ],
-    "cursor": 4,
-    "verify": { "result": "PASS", "at": "2026-10-22T08:30:00.000Z" },
+    "cursor": 5,
+    "verify": { "result": "PASS", "at": "2026-10-24T02:20:00.000Z" },
     "steps": [
         {
             "id": "F-1:PB-1",
