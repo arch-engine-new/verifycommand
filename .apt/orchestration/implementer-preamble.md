@@ -16,6 +16,13 @@
 - 判断启动日志错误用 `Select-String -CaseSensitive " ERROR "`（Flyway 警告含 `Error Code` 会被误判）。
 - 端到端启动：`scripts/paycenter/run-local.ps1`（默认后台启动并等待 `/jeecg-boot/v1/ping`），`-Stop` 停止；`-EnvOnly` 仅注入环境变量。
 
+## 代码质量门禁（`check_code_quality`，S1/S2 实测会判 FAIL 的点）
+- 任何 public 方法（含测试类、测试内部类、Controller）缺紧邻有效注释 → 报警；
+- 函数 ≥ ~14 行且 ≥ 4 个分支却无解释性注释 → medium（≥5 个 medium 即 FAIL）；
+- 字符串拼接 SQL（含测试清理 SQL、表名拼接）→ high；
+- 出现 `system(` 字样（如 Java `Clock.system(zone)`）会被误判 C 危险 API → high；改用 `Clock.systemUTC().withZone(zone)`。
+- 自检：`check_code_quality`（projectRoot=`D:\software\dog-food`）输出文件交给 `node .apt/orchestration/quality-filter.cjs <文件> paycenter`，要求 high=0、medium=0。
+
 ## 安全硬规则（违反即停并回报 BLOCKED）
 - **绝不读取/输出** `.apt/local/*` 的值、`.ai/arch/arch.secrets.json`、任何密钥/口令/银联凭证；只能由 `scripts/paycenter/run-local.ps1` 读取并注入环境变量。不得 `cat`/`Get-Content` 这些文件，不得 echo 环境变量值（只可打印长度）。
 - 仓库文件不得写入明文密码；配置一律 `${ENV:默认}` 占位。明文密钥不得进入命令行参数、日志、提交。

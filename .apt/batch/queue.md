@@ -1,5 +1,5 @@
 # APT 批量队列（batch-mcp 渲染视图）
-> 共 10 项（in-progress x1 / done x5 / parked x4）｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 12 项（pending x1 / parked x4 / archived x7）｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## F-1
 - 类型：feature
@@ -129,3 +129,31 @@
 - 确认：已确认
 - 泊车：无
 - 依赖：S1(F-1), S2.5(F-6 done), S3(F-8), S4(F-9)
+
+## F-11
+- 类型：feature
+- 优先级：P1
+- 标题：配置银商生产环境凭证（UNIONPAY_MAIN 主体 + 子商户号映射）
+- 收敛记录：目的：配置银商生产环境凭证，使 paycenter 银联通道对接生产。
+边界：1) application-dev.yml bootstrap 下补充 mid/tid/msg-src/msg-src-id 的 ${PAY_UNIONPAY_*:} 环境变量绑定；2) 设置环境变量 PAY_UNIONPAY_ENV=PROD, PAY_UNIONPAY_BASE_URL=https://api-mop.chinaums.com, PAY_UNIONPAY_BOOTSTRAP_MID=898500100012255, PAY_UNIONPAY_BOOTSTRAP_TID=5S6FL2VZ, PAY_UNIONPAY_BOOTSTRAP_MSG_SRC_ID=14BF, PAY_UNIONPAY_MSG_SRC_ID=14BF, 以及 appId/appKey/commKey/msgSrc（待用户提供）；3) 录入 pay_merchant_subject 子商户号 898500100012257（默认主体 UNIONPAY_MAIN + 商户级映射 project_id=''）。不开发新功能。
+已确认：env=PROD, apiBaseUrl=https://api-mop.chinaums.com, mid=898500100012255, tid=5S6FL2VZ, msgSrcId=14BF, 子商户号=898500100012257（默认主体+商户级映射）。
+待提供：appId, appKey, commKey, msgSrc（用户稍后提供）。
+验收：1) yml bootstrap 有 mid/tid/msg-src/msg-src-id 的环境变量绑定；2) PAY_UNIONPAY_* 环境变量正确设置（含敏感凭证）；3) pay_merchant_subject 表有 sub_mchnt_no=898500100012257 的商户级映射；4) 启动后 pay_subject 表 UNIONPAY_MAIN 主体 main_mchnt_no=898500100012255, main_term_no=5S6FL2VZ, msg_src_id=14BF 且凭证已配置。
+- 截图：无
+- 分流：轻链：配置变更（yml 补充环境变量绑定 + 环境变量设置 + 子商户号录入），无需新 spec，≤2 子任务
+- 测试策略：accept-batch
+- 确认：待确认（敏感凭证 appId/appKey/commKey/msgSrc 待用户提供）
+- 泊车：无
+- 依赖：无
+
+## B-1
+- 类型：bug
+- 优先级：P1
+- 标题：银联查询/退款/退款查询/关单 vaMchntNo 对齐主商户号 + 退款补 satInfo 分账明细
+- 收敛记录：复现：用子商户号 vaMchntNo 对已创建订单发查询/退款/关单 → 预期银商查无此单或拒单（订单创建于主商户号 898500100012255 下）。期望：queryOrder/refund/queryRefund/closeOrder 四处 vaMchntNo 改取主体级 mainMchntNo（与已验证下单基准一致）；refund 在分账模式（satType=01）下补 vaFld.satInfo（merId/refundOrderId/refundAmt/oriMerOrderId，PDF：satRule=01/03 只允许退 1 级子订单）。影响面：UnionPayChannel.queryOrder/refund/queryRefund/closeOrder 及退款/查询/关单编排调用方传值链路；通知验签已审计无差异。对照依据：docs/unionpay/chinaums-api-cheatsheet.md §2.2-2.5。
+- 截图：无
+- 分流：轻链：/feature §0.2 落痕 → 片内写复现测试（先红后绿）→ verify；联调先红（子商户号查询已建单被拒）后绿（主商户号通过）
+- 测试策略：-
+- 确认：AI 自答（证据: PDF 逐接口审计报告 + 已验证下单基准报文 vaMchntNo=主商户号 + UnionPayChannel.java 四处当前取子商户号快照；未经用户确认——PDF 对查询/退款/关单仅写"商户号"未明确主/子，最终以联调先红后绿为准）
+- 泊车：无
+- 依赖：无

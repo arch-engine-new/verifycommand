@@ -1,5 +1,5 @@
 # APT 批量台账（batch-mcp 渲染视图）
-> 共 9 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
+> 共 12 条｜真源 .apt/batch/batch.db｜本文件为 .apt/batch/batch.db 的单向渲染视图，请勿手改；手改将被对账器判定为漂移并结构化拒绝
 
 ## L-1
 - batch：batch-1
@@ -63,3 +63,24 @@
 - 类型：attestation
 - 记录：2026-10-21T09:35:11.207Z
 - 数据：{"evidence":"用户 2026-10-20 确认 order=before_s3；S2.5（F-6，P0）必须在 F-3 之前执行且 F-3/F-4/F-5 spec 需按新支付主体模型修订。泊车 F-3/F-4/F-5 让位，完成后 S3/S4/S5 重入队继续。","itemIds":["F-3","F-4","F-5"],"kind":"userOverride"}
+
+## L-10
+- batch：batch-2
+- item：F-11
+- 类型：acceptance-unit
+- 记录：2026-10-22T11:27:59.294Z
+- 数据：{"aiSelfAnswered":false,"criteria":"yml bootstrap 有 mid/tid/msg-src/msg-src-id 环境变量绑定；PAY_UNIONPAY_* 环境变量正确设置（含 appId/appKey/commKey/msgSrc）；pay_merchant_subject 有 sub_mchnt_no=898500100012257 商户级映射；启动后 pay_subject UNIONPAY_MAIN 凭证正确","reproduction":null,"sliceId":"F-11","status":"pending-acceptance"}
+
+## L-11
+- batch：batch-3
+- item：B-1
+- 类型：acceptance-unit
+- 记录：2026-10-23T20:23:50.484Z
+- 数据：{"aiSelfAnswered":true,"criteria":"①queryOrder/refund/queryRefund/closeOrder 四处 vaMchntNo 均上送主体级主商户号（与已验证下单基准一致）；②refund 分账模式补 vaFld.satInfo（merId/refundOrderId/refundAmt/oriMerOrderId）；③复现测试先红后绿全绿；④生产联调：主商户号查询/退款/关单各一次不再被拒（先红=子商户号查无此单证据留痕）","reproduction":"片内复现测试：UnionPayChannelQueryRefundCloseTest 断言请求体 vaMchntNo=主商户号（先红=当前为子商户号）；生产复现：对订单 14BF202610240012553580655363 用子商户号 898500100012257 发 online/query 预期查无此单","sliceId":"B-1","status":"pending-acceptance"}
+
+## L-12
+- batch：-
+- item：-
+- 类型：attestation
+- 记录：2026-10-24T01:15:32.752Z
+- 数据：{"evidence":"用户 2026-10-24 显式指令「批准入列并修复，然后重新走验收流程」——平台侧预授权（子 agent 派发/读写/执行）核对通过，由用户当轮指令直接授权","kind":"dispatchFlip"}
